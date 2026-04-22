@@ -13,33 +13,33 @@ export default function BillingForm({ onSubmit }: { onSubmit?: (data: any) => vo
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="text-sm font-medium">Full name</label>
-        <input name="fullName" required className="mt-1 block w-full rounded-md border-gray-200 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" />
+        <input name="fullName" required className="mt-1 block w-full rounded-md border-border shadow-sm p-2 focus:ring-primary focus:border-primary bg-background text-foreground" />
       </div>
 
       <div>
         <label className="text-sm font-medium">Email</label>
-        <input name="email" type="email" required className="mt-1 block w-full rounded-md border-gray-200 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" />
+        <input name="email" type="email" required className="mt-1 block w-full rounded-md border-border shadow-sm p-2 focus:ring-primary focus:border-primary bg-background text-foreground" />
       </div>
 
       <div>
         <label className="text-sm font-medium">Address</label>
-        <input name="address" className="mt-1 block w-full rounded-md border-gray-200 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" />
+        <input name="address" className="mt-1 block w-full rounded-md border-border shadow-sm p-2 focus:ring-primary focus:border-primary bg-background text-foreground" />
       </div>
 
       <div className="grid grid-cols-2 gap-2">
         <div>
           <label className="text-sm font-medium">City</label>
-          <input name="city" className="mt-1 block w-full rounded-md border-gray-200 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" />
+          <input name="city" className="mt-1 block w-full rounded-md border-border shadow-sm p-2 focus:ring-primary focus:border-primary bg-background text-foreground" />
         </div>
         <div>
           <label className="text-sm font-medium">Postal</label>
-          <input name="postal" className="mt-1 block w-full rounded-md border-gray-200 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" />
+          <input name="postal" className="mt-1 block w-full rounded-md border-border shadow-sm p-2 focus:ring-primary focus:border-primary bg-background text-foreground" />
         </div>
       </div>
 
       <div>
         <label className="text-sm font-medium">Country</label>
-        <select name="country" className="mt-1 block w-full rounded-md border-gray-200 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500">
+        <select name="country" className="mt-1 block w-full rounded-md border-border shadow-sm p-2 focus:ring-primary focus:border-primary bg-background text-foreground">
           <option value="">Select country</option>
           <option>United States</option>
           <option>United Kingdom</option>
@@ -49,7 +49,7 @@ export default function BillingForm({ onSubmit }: { onSubmit?: (data: any) => vo
 
       <div>
         <label className="text-sm font-medium">Notes (optional)</label>
-        <textarea name="notes" rows={3} className="mt-1 block w-full rounded-md border-gray-200 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" />
+        <textarea name="notes" rows={3} className="mt-1 block w-full rounded-md border-border shadow-sm p-2 focus:ring-primary focus:border-primary bg-background text-foreground" />
       </div>
 
       <div className="pt-2">

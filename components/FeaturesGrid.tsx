@@ -38,363 +38,210 @@ export default function FeaturesGrid() {
   return (
     <section className="py-12 sm:py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6">
+
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12 md:mb-16 animate-fade-in px-2 sm:px-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-2 sm:mb-3 md:mb-4 leading-[1.2]">
-            Always Check the History of a Car Before Buying It
+            Make Smarter Car Decisions with Verified History Reports
           </h2>
-          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 leading-relaxed">
-            Uncover comprehensive insights with an AutoFactsCheck Vehicle History Report
+
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground leading-relaxed">
+            Instantly uncover hidden issues, ownership records, mileage accuracy, and accident history with AutoRevealed.
           </p>
         </div>
 
-        {/* Tab Navigation */}
-        <div 
-          className="flex overflow-x-auto gap-2 sm:gap-4 md:gap-8 mb-0 border-b border-gray-200 pb-0 animate-fade-in-up" 
-          style={{ animationDelay: '0.1s' }}
-          onMouseEnter={() => setIsAutoPlay(false)}
-          onMouseLeave={() => setIsAutoPlay(true)}
-        >
+        {/* Tabs */}
+        <div className="flex overflow-x-auto gap-2 sm:gap-4 md:gap-8 border-b border-border animate-fade-in-up">
           {tabs.map((tab) => (
-            <div key={tab.id} className="relative min-w-max md:flex-initial">
+            <div key={tab.id} className="relative min-w-max">
               <button
-                onClick={() => {
-                  setActiveTab(tab.id)
-                  setIsAutoPlay(false)
-                }}
-                className={`text-xs sm:text-sm md:text-base font-semibold whitespace-nowrap pb-3 sm:pb-4 px-2 sm:px-3 md:px-4 transition-all duration-300 relative group ${
-                  activeTab === tab.id
-                    ? 'text-blue-600'
-                    : 'text-gray-500 hover:text-gray-700'
-                }`}
+                onClick={() => setActiveTab(tab.id)}
+                className={`text-xs sm:text-sm md:text-base font-semibold pb-3 px-3 transition ${activeTab === tab.id
+                  ? 'text-[#780000]'
+                  : 'text-muted-foreground hover:text-[#780000]'
+                  }`}
               >
                 {tab.label}
               </button>
-              
-              {/* Loader Bar */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-200 rounded-full overflow-hidden w-full">
-                {activeTab === tab.id && isAutoPlay && (
-                  <div 
-                    className="h-full bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 rounded-full"
-                    style={{
-                      animation: 'tabProgress 5s linear forwards',
-                      width: '100%',
-                    }}
-                  ></div>
-                )}
-                {activeTab === tab.id && !isAutoPlay && (
-                  <div className="h-full w-full bg-gradient-to-r from-blue-600 to-cyan-500"></div>
+
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-200 rounded-full overflow-hidden">
+                {activeTab === tab.id && (
+                  <div className="h-full bg-[#780000] w-full"></div>
                 )}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Content Section - Add top padding to prevent overlap */}
-        <div className="mt-6 sm:mt-8 md:mt-12 lg:mt-16">
-        {activeTab === 'odometer' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            {/* Left Side - Image */}
-             <div className="relative w-full h-60 sm:h-72 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden">
-              <Image
-                src="/odometer-check-en@1x.webp"
-                alt="Odometer Check"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
+        {/* Content */}
+        <div className="mt-10">
 
-            {/* Right Side - Content */}
-            <div className="space-y-3 sm:space-y-4 md:space-y-6">
-              {/* Icon */}
-              <div className="inline-flex items-center justify-center w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 bg-blue-100 rounded-xl sm:rounded-2xl">
-                <TrendingUp className="w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 text-blue-600" strokeWidth={2} />
+          {/* ODOMETER */}
+          {activeTab === 'odometer' && (
+            <div className="grid md:grid-cols-2 gap-10 items-start">
+
+              <div className="relative w-full h-80">
+                <Image src="/odometer-check-en@1x.webp" alt="" fill className="object-contain" />
               </div>
 
-              <div>
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-gray-900 mb-2 sm:mb-2.5 md:mb-3">
-                  Past Odometer Readings
-                </h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                  Has the odometer ever been rolled back? Detect potential odometer fraud with our comprehensive mileage history analysis. Compare recorded mileage across all data sources and identify inconsistencies that may indicate fraud.
+              <div className="space-y-5">
+                <div className="w-14 h-14 bg-[#780000]/10 flex items-center justify-center rounded-xl">
+                  <TrendingUp className="text-[#780000]" />
+                </div>
+
+                <h3 className="text-2xl font-bold">Past Odometer Readings</h3>
+                <p className="text-gray-600">
+                  Detect mileage fraud by analyzing historical odometer records across multiple sources.
                 </p>
+
+                <Link href="/pricing" className="bg-[#780000] hover:bg-[#5a0000] text-white px-6 py-3 rounded-full inline-flex items-center gap-2">
+                  Check Your Car <ChevronRight />
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* OWNERSHIP */}
+          {activeTab === 'ownership' && (
+            <div className="grid md:grid-cols-2 gap-10 items-start">
+
+              <div className="relative w-full h-80">
+                <Image src="/ownership.webp" alt="" fill className="object-contain" />
               </div>
 
-              {/* Data Table */}
-              {/* <div className="bg-gray-50 rounded-lg sm:rounded-xl overflow-x-auto border border-gray-200">
-                <table className="w-full text-2xs sm:text-xs md:text-sm">
-                  <thead className="bg-gray-100 border-b border-gray-200">
-                    <tr>
-                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left font-semibold text-gray-700">Date</th>
-                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left font-semibold text-gray-700">Mileage</th>
-                      <th className="px-2 sm:px-4 py-2 sm:py-3 text-left font-semibold text-gray-700">Provider</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-gray-100 hover:bg-white transition">
-                      <td className="px-2 sm:px-4 py-2 sm:py-3 text-gray-900 font-medium">07/14/2021</td>
-                      <td className="px-2 sm:px-4 py-2 sm:py-3">
-                        <span className="inline-flex items-center gap-1 text-gray-700">
-                          <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-green-500 rounded-full"></span>
-                          44,952 mi
-                        </span>
-                      </td>
-                      <td className="px-2 sm:px-4 py-2 sm:py-3 text-gray-600 text-2xs sm:text-xs">VIN provided</td>
-                    </tr>
-                    <tr className="border-b border-gray-100 hover:bg-white transition">
-                      <td className="px-2 sm:px-4 py-2 sm:py-3 text-gray-900 font-medium">08/18/2013</td>
-                      <td className="px-2 sm:px-4 py-2 sm:py-3">
-                        <span className="inline-flex items-center gap-1 text-gray-700">
-                          <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-yellow-500 rounded-full"></span>
-                          44,862 mi
-                        </span>
-                      </td>
-                      <td className="px-2 sm:px-4 py-2 sm:py-3 text-gray-600 text-2xs sm:text-xs">UNCHKIN</td>
-                    </tr>
-                    <tr className="hover:bg-white transition">
-                      <td className="px-2 sm:px-4 py-2 sm:py-3 text-gray-900 font-medium">02/04/2015</td>
-                      <td className="px-2 sm:px-4 py-2 sm:py-3">
-                        <span className="inline-flex items-center gap-1 text-gray-700">
-                          <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-red-500 rounded-full"></span>
-                          75,898 mi
-                        </span>
-                      </td>
-                      <td className="px-2 sm:px-4 py-2 sm:py-3 text-gray-600 text-2xs sm:text-xs">Arizona Department of Environmental Quality</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div> */}
+              <div className="space-y-5">
+                <div className="w-14 h-14 bg-[#780000]/10 flex items-center justify-center rounded-xl">
+                  <FileText className="text-[#780000]" />
+                </div>
 
-              {/* CTA Button */}
-              <Link href="/pricing" className="inline-flex items-center gap-1 sm:gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-8 rounded-full transition-all duration-300 hover:gap-3 shadow-lg hover:shadow-xl text-sm sm:text-base">
-                Check Your Car
-                <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
-              </Link>
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'ownership' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <div className="relative w-full h-60 sm:h-72 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden">
-              <Image
-                src="/ownership.webp"
-                alt="Ownership History"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div className="space-y-3 sm:space-y-4 md:space-y-6">
-              <div className="inline-flex items-center justify-center w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 bg-cyan-100 rounded-xl sm:rounded-2xl">
-                <FileText className="w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 text-cyan-600" strokeWidth={2} />
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-gray-900 mb-2 sm:mb-2.5 md:mb-3">
-                  Ownership History
-                </h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                  Complete ownership timeline and vehicle history. Track how many previous owners, lease vs. personal use, and detailed ownership timeline information.
+                <h3 className="text-2xl font-bold">Ownership History</h3>
+                <p className="text-gray-600">
+                  Track previous owners, usage type, and complete ownership timeline.
                 </p>
-              </div>
-              <Link href="/pricing" className="inline-flex items-center gap-1 sm:gap-2 bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-8 rounded-full transition-all duration-300 hover:gap-3 shadow-lg hover:shadow-xl text-sm sm:text-base">
-                Check Ownership
-                <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
-              </Link>
-            </div>
-          </div>
-        )}
 
-        {activeTab === 'photos' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-           <div className="relative w-full h-60 sm:h-72 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden">
-              <Image
-                src="/photos-sale.webp"
-                alt="Photos on Sale"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div className="space-y-3 sm:space-y-4 md:space-y-6">
-              <div className="inline-flex items-center justify-center w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 bg-purple-100 rounded-xl sm:rounded-2xl">
-                <Zap className="w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 text-purple-600" strokeWidth={2} />
+                <Link href="/pricing" className="bg-[#780000] hover:bg-[#5a0000] text-white px-6 py-3 rounded-full inline-flex items-center gap-2">
+                  Check Ownership <ChevronRight />
+                </Link>
               </div>
-              <div>
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-gray-900 mb-2 sm:mb-2.5 md:mb-3">
-                  Photos on Sale
-                </h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                  Compare vehicle conditions across different time periods. View high-quality photos and track cosmetic changes to identify potential damage indicators.
-                </p>
-              </div>
-              <Link href="/pricing" className="inline-flex items-center gap-1 sm:gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-8 rounded-full transition-all duration-300 hover:gap-3 shadow-lg hover:shadow-xl text-sm sm:text-base">
-                View Photos
-                <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
-              </Link>
             </div>
-          </div>
-        )}
+          )}
 
-        {activeTab === 'damage' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <div className="relative w-full h-60 sm:h-72 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden">
-              <Image
-                src="/damage.webp"
-                alt="Damage Check"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div className="space-y-3 sm:space-y-4 md:space-y-6">
-              <div className="inline-flex items-center justify-center w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 bg-red-100 rounded-xl sm:rounded-2xl">
-                <AlertTriangle className="w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 text-red-600" strokeWidth={2} />
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-gray-900 mb-2 sm:mb-2.5 md:mb-3">
-                  Damage Check
-                </h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                  Uncover accident history with comprehensive damage assessment. Includes accidents, collisions, flood damage, fire damage, and structural issues reported to insurance.
-                </p>
-              </div>
-              <Link href="/pricing" className="inline-flex items-center gap-1 sm:gap-2 bg-red-600 hover:bg-red-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-8 rounded-full transition-all duration-300 hover:gap-3 shadow-lg hover:shadow-xl text-sm sm:text-base">
-                Check Damage
-                <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
-              </Link>
-            </div>
-          </div>
-        )}
+          {/* PHOTOS */}
+          {activeTab === 'photos' && (
+            <div className="grid md:grid-cols-2 gap-10 items-start">
 
-        {activeTab === 'technical' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <div className="relative w-full h-60 sm:h-72 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden">
-              <Image
-                src="/specification.webp"
-                alt="Technical Data"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div className="space-y-3 sm:space-y-4 md:space-y-6">
-              <div className="inline-flex items-center justify-center w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 bg-indigo-100 rounded-xl sm:rounded-2xl">
-                <Zap className="w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 text-indigo-600" strokeWidth={2} />
+              <div className="relative w-full h-80">
+                <Image src="/photos-sale.webp" alt="" fill className="object-contain" />
               </div>
-              <div>
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-gray-900 mb-2 sm:mb-2.5 md:mb-3">
-                  Technical Data
-                </h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                  Complete specifications including engine type, transmission, fuel type, GVWR, and all manufacturer details for accurate vehicle identification.
-                </p>
-              </div>
-              <button className="inline-flex items-center gap-1 sm:gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-8 rounded-full transition-all duration-300 hover:gap-3 shadow-lg hover:shadow-xl text-sm sm:text-base">
-                View Specs
-                <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
-              </button>
-            </div>
-          </div>
-        )}
 
-        {activeTab === 'stolen' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-             <div className="relative w-full h-60 sm:h-72 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden">
-              <Image
-                src="/stolen.webp"
-                alt="Stolen VIN Check"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div className="space-y-3 sm:space-y-4 md:space-y-6">
-              <div className="inline-flex items-center justify-center w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 bg-amber-100 rounded-xl sm:rounded-2xl">
-                <Shield className="w-6 sm:w-7 md:w-8 h-6 sm:h-7 md:h-8 text-amber-600" strokeWidth={2} />
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-gray-900 mb-2 sm:mb-2.5 md:mb-3">
-                  Stolen VIN Check
-                </h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                  Verify vehicle status against national stolen vehicle databases. Ensure the vehicle is not reported stolen, salvaged, or listed as a lemon law buyback.
+              <div className="space-y-5">
+                <div className="w-14 h-14 bg-[#780000]/10 flex items-center justify-center rounded-xl">
+                  <Zap className="text-[#780000]" />
+                </div>
+
+                <h3 className="text-2xl font-bold">Photos on Sale</h3>
+                <p className="text-gray-600">
+                  Compare vehicle images over time and identify possible damage.
                 </p>
+
+                <Link href="/pricing" className="bg-[#780000] hover:bg-[#5a0000] text-white px-6 py-3 rounded-full inline-flex items-center gap-2">
+                  View Photos <ChevronRight />
+                </Link>
               </div>
-              <Link href="/pricing" className="inline-flex items-center gap-1 sm:gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-8 rounded-full transition-all duration-300 hover:gap-3 shadow-lg hover:shadow-xl text-sm sm:text-base">
-                Verify Status
-                <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
-              </Link>
             </div>
-          </div>
-        )}
+          )}
+
+          {/* DAMAGE */}
+          {activeTab === 'damage' && (
+            <div className="grid md:grid-cols-2 gap-10 items-start">
+
+              <div className="relative w-full h-80">
+                <Image src="/damage.webp" alt="" fill className="object-contain" />
+              </div>
+
+              <div className="space-y-5">
+                <div className="w-14 h-14 bg-red-100 flex items-center justify-center rounded-xl">
+                  <AlertTriangle className="text-red-600" />
+                </div>
+
+                <h3 className="text-2xl font-bold">Damage Check</h3>
+                <p className="text-gray-600">
+                  Discover accident, flood, fire, and insurance-reported damages.
+                </p>
+
+                <Link href="/pricing" className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full inline-flex items-center gap-2">
+                  Check Damage <ChevronRight />
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* TECHNICAL */}
+          {activeTab === 'technical' && (
+            <div className="grid md:grid-cols-2 gap-10 items-start">
+
+              <div className="relative w-full h-80">
+                <Image src="/specification.webp" alt="" fill className="object-contain" />
+              </div>
+
+              <div className="space-y-5">
+                <div className="w-14 h-14 bg-[#780000]/10 flex items-center justify-center rounded-xl">
+                  <Zap className="text-[#780000]" />
+                </div>
+
+                <h3 className="text-2xl font-bold">Technical Data</h3>
+                <p className="text-gray-600">
+                  Full specifications including engine, transmission, and features.
+                </p>
+
+                <button className="bg-[#780000] hover:bg-[#5a0000] text-white px-6 py-3 rounded-full inline-flex items-center gap-2">
+                  View Specs <ChevronRight />
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* STOLEN */}
+          {activeTab === 'stolen' && (
+            <div className="grid md:grid-cols-2 gap-10 items-start">
+
+              <div className="relative w-full h-80">
+                <Image src="/stolen.webp" alt="" fill className="object-contain" />
+              </div>
+
+              <div className="space-y-5">
+                <div className="w-14 h-14 bg-[#780000]/10 flex items-center justify-center rounded-xl">
+                  <Shield className="text-[#780000]" />
+                </div>
+
+                <h3 className="text-2xl font-bold">Stolen VIN Check</h3>
+                <p className="text-gray-600">
+                  Verify if a vehicle is reported stolen or flagged.
+                </p>
+
+                <Link href="/pricing" className="bg-[#780000] hover:bg-[#5a0000] text-white px-6 py-3 rounded-full inline-flex items-center gap-2">
+                  Verify Status <ChevronRight />
+                </Link>
+              </div>
+            </div>
+          )}
+
         </div>
 
-        {/* NMVTIS Badge */}
-        <div className="mt-8 sm:mt-12 md:mt-16 p-4 sm:p-6 bg-blue-50 border border-blue-200 rounded-xl sm:rounded-2xl flex items-start gap-3 sm:gap-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-          <div className="inline-flex items-center justify-center w-10 sm:w-12 h-10 sm:h-12 bg-blue-100 rounded-full flex-shrink-0">
-            <span className="text-lg sm:text-xl">✓</span>
+        {/* Bottom Badge */}
+        <div className="mt-16 p-6 bg-[#780000]/10 border border-[#780000]/20 rounded-xl flex gap-4">
+          <div className="w-12 h-12 bg-[#780000]/20 rounded-full flex items-center justify-center">
+            ✓
           </div>
           <div>
-            <h4 className="font-bold text-gray-900 mb-1 sm:mb-2 text-sm sm:text-base">Official NMVTIS Source</h4>
-            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-              AutoFactsCheck is an approved NMVTIS data provider. NMVTIS is a national database designed to protect consumers from fraud and unsafe vehicles, to prevent stolen vehicles from being resold, and to provide users with accurate and complete vehicle information.
+            <h4 className="font-bold">Official NMVTIS Source</h4>
+            <p className="text-gray-600 text-sm">
+              AutoRevealedis an approved NMVTIS provider helping prevent fraud and unsafe vehicle purchases.
             </p>
           </div>
         </div>
+
       </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes autoTabProgress {
-          from {
-            width: 0%;
-            opacity: 1;
-          }
-          to {
-            width: 100%;
-            opacity: 1;
-          }
-        }
-
-        @keyframes tabProgress {
-          from {
-            width: 0%;
-          }
-          to {
-            width: 100%;
-          }
-        }
-
-        .animate-fade-in {
-          animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .animate-fade-in-up {
-          animation: fadeInUp 0.8s ease-out forwards;
-          opacity: 0;
-        }
-      `}</style>
     </section>
   )
 }

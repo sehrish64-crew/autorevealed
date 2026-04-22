@@ -96,8 +96,8 @@ export default async function WhyAutoFactsCheck() {
           </div>
 
           <div className="text-center space-y-4">
-            <div className="w-24 h-24 mx-auto rounded-full bg-yellow-100 flex items-center justify-center">
-              <TrendingDown className="w-12 h-12 text-yellow-600" strokeWidth={2.5} />
+            <div className="w-24 h-24 mx-auto rounded-full bg-[#D0A0A0] flex items-center justify-center">
+              <TrendingDown className="w-12 h-12 text-[#780000]" strokeWidth={2.5} />
             </div>
             <h3 className="text-xl font-bold text-gray-900">
               {t('why_section3_title')}

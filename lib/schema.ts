@@ -2,9 +2,9 @@ export function getOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'TrueAutoCheck',
-    url: 'https://trueautocheck.com',
-    logo: 'https://trueautocheck.com/favicon.ico',
+    name: 'AutoRevealed',
+    url: 'https://autorevealed.com',
+    logo: 'https://autorevealed.com/favicon.ico',
     description: "Trust data, not words. Check any car's history in seconds",
     sameAs: [],
     contactPoint: {
@@ -19,10 +19,10 @@ export function getLocalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'TrueAutoCheck',
+    name: 'AutoRevealed',
     description: "Trust data, not words. Check any car's history in seconds",
-    image: 'https://trueautocheck.com/favicon.ico',
-    url: 'https://trueautocheck.com',
+    image: 'https://autorevealed.com/favicon.ico',
+    url: 'https://autorevealed.com',
     priceRange: '$$',
     areaServed: {
       '@type': 'Country',
@@ -40,7 +40,7 @@ export function getProductSchema() {
     description: "Complete vehicle history check from 900+ global databases",
     brand: {
       '@type': 'Brand',
-      name: 'TrueAutoCheck',
+      name: 'AutoRevealed',
     },
     offers: {
       '@type': 'AggregateOffer',
@@ -78,11 +78,11 @@ export function getArticleSchema(article: {
     '@type': 'Article',
     headline: article.title,
     description: article.description,
-    image: article.image || 'https://trueautocheck.com/favicon.ico',
+    image: article.image || 'https://autorevealed.com/favicon.ico',
     datePublished: article.datePublished || new Date().toISOString(),
     author: {
       '@type': 'Organization',
-      name: article.author || 'TrueAutoCheck',
+      name: article.author || 'AutoRevealed',
     },
   };
 }

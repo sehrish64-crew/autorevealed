@@ -32,7 +32,7 @@ export default function WhyAutoFactsCheck() {
           <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             {t('why_title')}
           </h2>
-          <p className="text-xs sm:text-sm md:text-base lg:text-xl text-gray-700 leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base lg:text-xl text-muted-foreground leading-relaxed">
             {t('why_subtitle')}
           </p>
         </div>
@@ -105,44 +105,44 @@ export default function WhyAutoFactsCheck() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {/* VIN Check Card */}
               <div className="group animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-blue-500 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 h-full flex flex-col md-flex-row">
-                  <div className="inline-flex w-12 h-12 bg-blue-100 rounded-xl items-center justify-center text-blue-600 font-bold text-xl mb-6 group-hover:bg-blue-500 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                <div className="bg-background border border-border rounded-2xl p-8 hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all duration-500 h-full flex flex-col md-flex-row">
+                  <div className="inline-flex w-12 h-12 bg-primary/20 rounded-xl items-center justify-center text-primary font-bold text-xl mb-6 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300">
                     ✓
                   </div>
-                  <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Verification Method</p>
-                  <p className="text-xl md:text-2xl font-black text-gray-900 leading-tight">By VIN & Plate</p>
-                  <p className="text-xs text-gray-500 mt-4">Multiple lookup options</p>
+                  <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">Verification Method</p>
+                  <p className="text-xl md:text-2xl font-black text-foreground leading-tight">By VIN & Plate</p>
+                  <p className="text-xs text-muted-foreground mt-4">Multiple lookup options</p>
                 </div>
               </div>
 
               {/* Daily VIN Searches Card */}
               <div className="group animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-cyan-500 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
-                  <div className="inline-flex w-12 h-12 bg-cyan-100 rounded-xl items-center justify-center text-cyan-600 font-bold text-xl mb-6 group-hover:bg-cyan-500 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                <div className="bg-background border border-border rounded-2xl p-8 hover:border-accent hover:shadow-xl hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                  <div className="inline-flex w-12 h-12 bg-accent/20 rounded-xl items-center justify-center text-accent font-bold text-xl mb-6 group-hover:bg-accent group-hover:text-accent-foreground group-hover:scale-110 transition-all duration-300">
                     →
                   </div>
-                  <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Daily Searches</p>
-                  <p className="text-3xl md:text-4xl font-black text-gray-900 group-hover:text-cyan-600 transition-colors duration-300">45K+</p>
-                  <p className="text-xs text-gray-500 mt-4">Active verifications</p>
+                  <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">Daily Searches</p>
+                  <p className="text-3xl md:text-4xl font-black text-foreground group-hover:text-accent transition-colors duration-300">45K+</p>
+                  <p className="text-xs text-muted-foreground mt-4">Active verifications</p>
                 </div>
               </div>
 
               {/* VIN Checked On Card */}
               <div className="group animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-purple-500 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
-                  <div className="inline-flex w-12 h-12 bg-purple-100 rounded-xl items-center justify-center text-purple-600 font-bold text-xl mb-6 group-hover:bg-purple-500 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                <div className="bg-background border border-border rounded-2xl p-8 hover:border-secondary hover:shadow-xl hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
+                  <div className="inline-flex w-12 h-12 bg-secondary/20 rounded-xl items-center justify-center text-secondary font-bold text-xl mb-6 group-hover:bg-secondary group-hover:text-secondary-foreground group-hover:scale-110 transition-all duration-300">
                     ⊕
                   </div>
-                  <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Data Sources</p>
-                  <p className="text-3xl md:text-4xl font-black text-gray-900 group-hover:text-purple-600 transition-colors duration-300">70+</p>
-                  <p className="text-xs text-gray-500 mt-4">Databases & sources</p>
+                  <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">Data Sources</p>
+                  <p className="text-3xl md:text-4xl font-black text-foreground group-hover:text-secondary transition-colors duration-300">70+</p>
+                  <p className="text-xs text-muted-foreground mt-4">Databases & sources</p>
                 </div>
               </div>
 
               {/* Vehicle History Card */}
               <div className="group animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
                 <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-amber-500 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 h-full flex flex-col">
-                  <div className="inline-flex w-12 h-12 bg-amber-100 rounded-xl items-center justify-center text-amber-600 font-bold text-xl mb-6 group-hover:bg-amber-500 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                  <div className="inline-flex w-12 h-12 bg-primary/20 rounded-xl items-center justify-center text-primary font-bold text-xl mb-6 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300">
                     ◆
                   </div>
                   <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Report Scope</p>
@@ -175,7 +175,7 @@ export default function WhyAutoFactsCheck() {
             <SwiperSlide>
               <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 min-h-64 flex flex-col justify-between transform transition-all duration-300">
                 <div>
-                  <div className="inline-flex w-14 h-14 bg-blue-100 rounded-xl items-center justify-center text-blue-600 font-bold text-2xl mb-6 group-hover:bg-blue-500 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                  <div className="inline-flex w-14 h-14 bg-primary/20 rounded-xl items-center justify-center text-primary font-bold text-2xl mb-6 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300">
                     ✓
                   </div>
                   <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Verification Method</p>
@@ -189,7 +189,7 @@ export default function WhyAutoFactsCheck() {
             <SwiperSlide>
               <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 min-h-64 flex flex-col justify-between transform transition-all duration-300">
                 <div>
-                  <div className="inline-flex w-14 h-14 bg-cyan-100 rounded-xl items-center justify-center text-cyan-600 font-bold text-2xl mb-6 group-hover:bg-cyan-500 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                  <div className="inline-flex w-14 h-14 bg-accent/20 rounded-xl items-center justify-center text-accent font-bold text-2xl mb-6 group-hover:bg-accent group-hover:text-accent-foreground group-hover:scale-110 transition-all duration-300">
                     →
                   </div>
                   <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Daily Searches</p>
@@ -203,7 +203,7 @@ export default function WhyAutoFactsCheck() {
             <SwiperSlide>
               <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 min-h-64 flex flex-col justify-between transform transition-all duration-300">
                 <div>
-                  <div className="inline-flex w-14 h-14 bg-purple-100 rounded-xl items-center justify-center text-purple-600 font-bold text-2xl mb-6 group-hover:bg-purple-500 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                  <div className="inline-flex w-14 h-14 bg-secondary/20 rounded-xl items-center justify-center text-secondary font-bold text-2xl mb-6 group-hover:bg-secondary group-hover:text-secondary-foreground group-hover:scale-110 transition-all duration-300">
                     ⊕
                   </div>
                   <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Data Sources</p>
@@ -217,7 +217,7 @@ export default function WhyAutoFactsCheck() {
             <SwiperSlide>
               <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 min-h-64 flex flex-col justify-between transform transition-all duration-300">
                 <div>
-                  <div className="inline-flex w-14 h-14 bg-amber-100 rounded-xl items-center justify-center text-amber-600 font-bold text-2xl mb-6 group-hover:bg-amber-500 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                  <div className="inline-flex w-14 h-14 bg-primary/20 rounded-xl items-center justify-center text-primary font-bold text-2xl mb-6 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300">
                     ◆
                   </div>
                   <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Report Scope</p>
@@ -359,9 +359,9 @@ export default function WhyAutoFactsCheck() {
           :global(.mobile-vin-swiper .swiper-button-prev) {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%);
+            background: linear-gradient(135deg, #2A729A 0%, #5BC2E7 100%);
             border-radius: 14px;
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(42, 114, 154, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             top: 50%;
             transform: translateY(-50%);
@@ -373,8 +373,8 @@ export default function WhyAutoFactsCheck() {
 
           :global(.mobile-vin-swiper .swiper-button-next:hover),
           :global(.mobile-vin-swiper .swiper-button-prev:hover) {
-            background: linear-gradient(135deg, #0891b2 0%, #0369a1 100%);
-            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #1D4363 0%, #2A729A 100%);
+            box-shadow: 0 8px 25px rgba(42, 114, 154, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
             transform: translateY(-50%) scale(1.15);
             border-color: rgba(255, 255, 255, 0.5);
           }
@@ -416,10 +416,10 @@ export default function WhyAutoFactsCheck() {
           }
 
           :global(.mobile-vin-swiper .swiper-pagination-bullet-active) {
-            background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%);
+            background: linear-gradient(135deg, #2A729A 0%, #5BC2E7 100%);
             width: 28px;
             border-radius: 5px;
-            box-shadow: 0 2px 8px rgba(6, 182, 212, 0.4);
+            box-shadow: 0 2px 8px rgba(42, 114, 154, 0.4);
           }
         `}</style>
       </div>

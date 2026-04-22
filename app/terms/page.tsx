@@ -3,10 +3,10 @@ import TermsPageClient from './terms-client'
 
 export const metadata: Metadata = {
   title: 'Terms and Conditions - AutoFactsCheck',
-  description: 'Read the terms and conditions for using AutoFactsCheck services. Understand your rights and responsibilities.',
+  description: 'Read the terms and conditions for using AutoRevealedservices. Understand your rights and responsibilities.',
   openGraph: {
-    title: 'Terms and Conditions - TrueAutoCheck',
-    description: 'Our terms explain the rules for using TrueAutoCheck vehicle history reports.',
+    title: 'Terms and Conditions - AutoRevealed',
+    description: 'Our terms explain the rules for using AutoRevealed vehicle history reports.',
     url: 'https://autofactscheck.com/terms',
     type: 'website',
   },

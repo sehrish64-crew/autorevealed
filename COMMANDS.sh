@@ -1,9 +1,9 @@
 #!/bin/bash
-# AutoFactsCheck - Hostinger Deployment Command Reference
+# AutoRevealed- Hostinger Deployment Command Reference
 # Copy and paste these commands in order
 
 echo "╔═══════════════════════════════════════════════════════════════════════════════╗"
-echo "║                 AutoFactsCheck - Hostinger Deployment Commands                ║"
+echo "║                 AutoRevealed- Hostinger Deployment Commands                ║"
 echo "║                          Copy & Paste in Order                               ║"
 echo "╚═══════════════════════════════════════════════════════════════════════════════╝"
 

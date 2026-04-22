@@ -51,7 +51,7 @@ export default function SubscribeButtons() {
         <button
           key={pkg.key}
           onClick={() => handleCheckout(pkg.key)}
-          className={`px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition ${!initialized ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`px-4 py-2 rounded bg-primary text-primary-foreground hover:bg-primary/90 transition ${!initialized ? 'opacity-50 cursor-not-allowed' : ''}`}
           disabled={!initialized}
         >
           Subscribe to {pkg.name}

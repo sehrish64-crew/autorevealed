@@ -10,7 +10,7 @@
 module.exports = {
   apps: [
     {
-      name: 'trueautocheck',
+      name: 'autorevealed',
       script: 'hostinger-start.js',
       args: [],
       cwd: __dirname,

@@ -15,12 +15,13 @@ export default function PrivacyPageClient() {
       <div className="relative container mx-auto px-6 py-20">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <h1 className="text-4xl font-bold text-gray-900">Privacy Policy</h1>
-          <p className="text-gray-600 text-lg">Last Updated: January 1st, 2026</p>
+                    <p className="text-gray-600 text-lg">Last Update: 31 March 2026</p>
+
         </div>
 
         <div className="mt-10 space-y-8 max-w-3xl mx-auto text-gray-700">
           <section>
-            <p className="text-lg font-semibold text-gray-900 mb-4">Allied Timber, operating autofactscheck.com, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.</p>
+            <p className="text-lg font-semibold text-gray-900 mb-4">Allied Timber, operating AutoRevealed.com, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.</p>
             <div className="bg-blue-50 p-4 rounded-lg border border-blue-200 space-y-3">
               <p className="text-gray-700"><strong>Key Points:</strong></p>
               <ul className="list-disc list-inside space-y-1 ml-2">
@@ -143,7 +144,7 @@ export default function PrivacyPageClient() {
               <li><strong>Portability:</strong> Request transfer of your information</li>
               <li><strong>Withdrawal of Consent:</strong> Withdraw consent for marketing communications</li>
             </ul>
-            <p className="mt-4">To exercise these rights, please contact us at info@autofactscheck.com.</p>
+            <p className="mt-4">To exercise these rights, please contact us at info@AutoRevealed.com.</p>
           </section>
 
           <section>
@@ -201,8 +202,8 @@ export default function PrivacyPageClient() {
             <p className="mt-3">If you have questions about this Privacy Policy or our privacy practices, please contact us:</p>
             <div className="mt-4 bg-blue-50 p-4 rounded-lg border border-blue-200 space-y-2">
               <p className="text-gray-700"><strong>Allied Timber</strong></p>
-              <p className="text-gray-700"><strong>Email:</strong> <a href="mailto:info@autofactscheck.com" className="text-blue-600 hover:underline">info@autofactscheck.com</a></p>
-              <p className="text-gray-700"><strong>Website:</strong> <a href="https://autofactscheck.com" className="text-blue-600 hover:underline">https://autofactscheck.com</a></p>
+              <p className="text-gray-700"><strong>Email:</strong> <a href="mailto:info@AutoRevealed.com" className="text-blue-600 hover:underline">info@AutoRevealed.com</a></p>
+              <p className="text-gray-700"><strong>Website:</strong> <a href="https://AutoRevealed.com" className="text-blue-600 hover:underline">https://AutoRevealed.com</a></p>
             </div>
             <p className="mt-4">We will respond to your inquiry within 30 days.</p>
           </section>

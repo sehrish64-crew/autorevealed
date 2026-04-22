@@ -15,18 +15,18 @@ export default function TermsPageClient() {
       <div className="container mx-auto px-6 py-20">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <h1 className="text-4xl font-bold text-gray-900">Terms and Conditions</h1>
-          <p className="text-gray-600 text-lg">Last Updated: January 1st, 2026</p>
+          <p className="text-gray-600 text-lg">Last Updated: March 31st, 2026</p>
         </div>
 
         <div className="mt-10 space-y-8 max-w-3xl mx-auto text-gray-700">
           <section>
             <h2 className="text-2xl font-semibold text-gray-900">1. Acceptance of Terms</h2>
-            <p className="mt-3">Welcome to autofactscheck.com, operated by Allied Timber. By accessing and using our website and services, you agree to comply with and be bound by the following terms and conditions. If you do not agree with any part of these terms, please do not use our services.</p>
+            <p className="mt-3">Welcome to AutoRevealed.com, operated by Allied Timber. By accessing and using our website and services, you agree to comply with and be bound by the following terms and conditions. If you do not agree with any part of these terms, please do not use our services.</p>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold text-gray-900">2. About Allied Timber</h2>
-            <p className="mt-3">Allied Timber provides vehicle history reports and VIN check services through autofactscheck.com. Our services include access to vehicle history information, accident records, title information, odometer readings, and other vehicle-related data.</p>
+            <p className="mt-3">Allied Timber provides vehicle history reports and VIN check services through AutoRevealed.com. Our services include access to vehicle history information, accident records, title information, odometer readings, and other vehicle-related data.</p>
           </section>
 
           <section>
@@ -68,7 +68,7 @@ export default function TermsPageClient() {
 
           <section>
             <h2 className="text-2xl font-semibold text-gray-900">7. Intellectual Property</h2>
-            <p className="mt-3">All content on autofactscheck.com, including but not limited to text, graphics, logos, images, and software, is the property of Allied Timber or its licensors and is protected by copyright, trademark, and other intellectual property laws.</p>
+            <p className="mt-3">All content on AutoRevealed.com, including but not limited to text, graphics, logos, images, and software, is the property of Allied Timber or its licensors and is protected by copyright, trademark, and other intellectual property laws.</p>
           </section>
 
           <section>
@@ -83,7 +83,7 @@ export default function TermsPageClient() {
 
           <section>
             <h2 className="text-2xl font-semibold text-gray-900">10. Limitation of Liability</h2>
-            <p className="mt-3">Allied Timber and autofactscheck.com shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use our services. Our total liability shall not exceed the amount paid by you for the specific service in question.</p>
+            <p className="mt-3">Allied Timber and AutoRevealed.com shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use our services. Our total liability shall not exceed the amount paid by you for the specific service in question.</p>
           </section>
 
           <section>
@@ -126,13 +126,13 @@ export default function TermsPageClient() {
             <p className="mt-3">If you have any questions about these Terms and Conditions, please contact us:</p>
             <div className="mt-4 bg-blue-50 p-4 rounded-lg border border-blue-200 space-y-2">
               <p className="text-gray-700"><strong>Allied Timber</strong></p>
-              <p className="text-gray-700"><strong>Email:</strong> <a href="mailto:info@autofactscheck.com" className="text-blue-600 hover:underline">info@autofactscheck.com</a></p>
-              <p className="text-gray-700"><strong>Website:</strong> <a href="https://autofactscheck.com" className="text-blue-600 hover:underline">https://autofactscheck.com</a></p>
+              <p className="text-gray-700"><strong>Email:</strong> <a href="mailto:info@AutoRevealed.com" className="text-blue-600 hover:underline">info@AutoRevealed.com</a></p>
+              <p className="text-gray-700"><strong>Website:</strong> <a href="https://AutoRevealed.com" className="text-blue-600 hover:underline">https://AutoRevealed.com</a></p>
             </div>
           </section>
 
           <section className="bg-gray-50 p-6 rounded-lg border border-gray-200 mt-8">
-            <p className="text-sm text-gray-700">By accessing and using autofactscheck.com, you acknowledge that you have read, understood, and agreed to these Terms and Conditions.</p>
+            <p className="text-sm text-gray-700">By accessing and using AutoRevealed.com, you acknowledge that you have read, understood, and agreed to these Terms and Conditions.</p>
           </section>
         </div>
       </div>

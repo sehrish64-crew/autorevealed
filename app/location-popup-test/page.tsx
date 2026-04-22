@@ -68,8 +68,8 @@ export default function LocationPopupTestPage() {
               </ul>
             </div>
 
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-              <h2 className="text-2xl font-bold text-yellow-900 mb-4">🔍 Debug Info</h2>
+            <div className="bg-[#E8D0D0] border border-[#D0A0A0] rounded-lg p-6">
+              <h2 className="text-2xl font-bold text-[#580000] mb-4">🔍 Debug Info</h2>
               <div className="space-y-2 text-gray-700 font-mono text-sm">
                 <p>Check browser console for any errors (F12 → Console tab)</p>
                 <p>Test URL: <code className="bg-white px-2 py-1 rounded">http://localhost:3000?showLocationPopup=true</code></p>

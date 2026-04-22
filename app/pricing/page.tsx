@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   description:
     'Affordable vehicle history report pricing plans. Premium reports starting from $29. Find the perfect plan for your needs.',
   openGraph: {
-    title: 'Pricing Plans - TrueAutoCheck Vehicle History Reports',
+    title: 'Pricing Plans - AutoRevealed Vehicle History Reports',
     description:
       'Affordable vehicle history report pricing plans. Premium reports starting from $29. Find the perfect plan for your needs.',
-    url: 'https://trueautocheck.com/pricing',
+    url: 'https://autorevealed.com/pricing',
     type: 'website',
   },
 }

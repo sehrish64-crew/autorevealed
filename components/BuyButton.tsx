@@ -250,7 +250,7 @@ export default function BuyButton({
           px-6 py-3 rounded-lg font-semibold transition-all duration-200
           whitespace-nowrap
           ${isDisabled
-            ? 'opacity-50 cursor-not-allowed bg-gray-300 text-gray-600'
+            ? 'opacity-50 cursor-not-allowed bg-muted text-muted-foreground'
             : 'bg-blue-600 text-white hover:bg-blue-700 active:scale-95 shadow-lg hover:shadow-xl'
           }
           ${className}

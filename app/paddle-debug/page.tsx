@@ -22,9 +22,9 @@ export default function PaddleDebugPage() {
             </div>
           </div>
 
-          <div id="paddle-status" className="bg-yellow-50 border border-yellow-200 rounded p-4">
-            <h3 className="font-semibold text-yellow-900 mb-2">Paddle Status:</h3>
-            <div className="text-sm text-yellow-800">
+          <div id="paddle-status" className="bg-[#E8D0D0] border border-[#D0A0A0] rounded p-4">
+            <h3 className="font-semibold text-[#580000] mb-2">Paddle Status:</h3>
+            <div className="text-sm text-[#780000]">
               <p>Waiting for Paddle.js script to load...</p>
             </div>
           </div>
@@ -39,7 +39,7 @@ export default function PaddleDebugPage() {
               const colors = {
                 success: 'text-green-900 bg-green-50 border-green-200',
                 error: 'text-red-900 bg-red-50 border-red-200',
-                warning: 'text-yellow-900 bg-yellow-50 border-yellow-200',
+                warning: 'text-[#580000] bg-[#E8D0D0] border-[#D0A0A0]',
                 info: 'text-blue-900 bg-blue-50 border-blue-200'
               };
               statusDiv.innerHTML = '<h3 class="font-semibold mb-2">Paddle Status:</h3>' +

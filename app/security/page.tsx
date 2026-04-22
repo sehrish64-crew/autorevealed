@@ -3,9 +3,9 @@ import SecurityPageClient from './security-client'
 
 export const metadata: Metadata = {
   title: 'Security - AutoFactsCheck',
-  description: 'Learn about AutoFactsCheck security measures protecting your vehicle history data with industry-leading encryption and privacy standards.',
+  description: 'Learn about AutoRevealedsecurity measures protecting your vehicle history data with industry-leading encryption and privacy standards.',
   openGraph: {
-    title: 'Security - TrueAutoCheck',
+    title: 'Security - AutoRevealed',
     description: 'Our commitment to data security and privacy.',
     url: 'https://autofactscheck.com/security',
     type: 'website',

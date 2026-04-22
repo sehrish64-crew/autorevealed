@@ -13,7 +13,7 @@ export default function LocationSelector() {
     <>
       <button
         onClick={() => setShowPopup(true)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition text-sm font-medium text-gray-700"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-muted transition text-sm font-medium text-foreground"
         title="Change location and currency"
       >
         <MapPin className="w-4 h-4" />

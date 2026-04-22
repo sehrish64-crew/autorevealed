@@ -16,7 +16,7 @@ const getPaymentStatusBadge = (status: string) => {
     case 'completed':
       return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Paid</Badge>
     case 'pending':
-      return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Pending</Badge>
+      return <Badge className="bg-[#D0A0A0] text-[#580000] hover:bg-[#D0A0A0]">Pending</Badge>
     case 'failed':
       return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">Failed</Badge>
     default:
@@ -31,7 +31,7 @@ const getReportStatusBadge = (status: string) => {
     case 'processing':
       return <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100">Processing</Badge>
     case 'pending':
-      return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Pending</Badge>
+      return <Badge className="bg-[#D0A0A0] text-[#580000] hover:bg-[#D0A0A0]">Pending</Badge>
     case 'failed':
       return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">Failed</Badge>
     default:
@@ -83,7 +83,7 @@ function OrderCard({ order, onStatusChange, onDelete, onView, onEdit }: {
       case 'processing':
         return 'bg-blue-100 text-blue-800 border-blue-200'
       case 'pending':
-        return 'bg-yellow-100 text-yellow-800 border-yellow-200'
+        return 'bg-[#D0A0A0] text-[#580000] border-[#D0A0A0]'
       case 'cancelled':
         return 'bg-red-100 text-red-800 border-red-200'
       case 'refunded':
@@ -195,7 +195,7 @@ function OrderTableRow({ order, onStatusChange, onDelete, onView, onEdit }: {
       case 'processing':
         return 'bg-blue-100 text-blue-800 border-blue-200'
       case 'pending':
-        return 'bg-yellow-100 text-yellow-800 border-yellow-200'
+        return 'bg-[#D0A0A0] text-[#580000] border-[#D0A0A0]'
       case 'cancelled':
         return 'bg-red-100 text-red-800 border-red-200'
       case 'refunded':

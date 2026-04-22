@@ -275,7 +275,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
               </Label>
               <div className="mb-2">
                 <div className="inline-flex items-center bg-gray-100 rounded-full p-1 gap-1">
-                  <button type="button" onClick={() => setVehicleIdType('vin')} className={`flex items-center gap-2 px-3 py-1 rounded-full transition-all ${vehicleIdType === 'vin' ? 'bg-gradient-to-r from-yellow-400 to-yellow-300 text-gray-900 shadow' : 'text-black hover:bg-gray-200'}`}>
+                  <button type="button" onClick={() => setVehicleIdType('vin')} className={`flex items-center gap-2 px-3 py-1 rounded-full transition-all ${vehicleIdType === 'vin' ? 'bg-[#780000] text-white shadow' : 'text-black hover:bg-gray-200'}`}>
                     <Key className="w-4 h-4" />
                     <span className="text-sm font-medium">By VIN</span>
                   </button>
@@ -401,7 +401,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                     key={pkg.id}
                     type="button"
                     onClick={() => setSelectedPackage(pkg.id)}
-                    className={`flex-1 p-3 rounded-lg border transition-all text-left ${selectedPackage === pkg.id ? 'bg-gradient-to-r from-yellow-400 to-yellow-300 text-gray-900 border-transparent shadow' : 'bg-white border-gray-200 hover:shadow-sm'}`}
+                    className={`flex-1 p-3 rounded-lg border transition-all text-left ${selectedPackage === pkg.id ? 'bg-[#780000] text-white border-transparent shadow' : 'bg-white border-gray-200 hover:shadow-sm'}`}
                   >
                     <div className="font-semibold">{pkg.name}</div>
                     <div className="text-sm text-gray-500 mt-1">{formatCurrency(getPrice(pkg.id as any, selectedCountry.currency), selectedCountry.currency, `${selectedCountry.language}-${selectedCountry.code}`)}</div>

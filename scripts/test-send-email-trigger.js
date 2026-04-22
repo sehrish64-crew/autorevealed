@@ -12,8 +12,8 @@ const BASE_URL = process.env.BASE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'ht
 const to = process.env.TO || 'sehrishnadeem39@gmail.com'
 
 async function main() {
-  const subject = encodeURIComponent('Test Email from TrueAutoCheck')
-  const html = encodeURIComponent('<h1>This is a test email from TrueAutoCheck</h1>')
+  const subject = encodeURIComponent('Test Email from AutoRevealed')
+  const html = encodeURIComponent('<h1>This is a test email from AutoRevealed</h1>')
   const url = `${BASE_URL}/api/send-email/trigger?to=${to}&subject=${subject}&html=${html}`
   console.log('Calling', url)
   const res = await fetch(url)

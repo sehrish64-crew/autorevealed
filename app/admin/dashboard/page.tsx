@@ -201,7 +201,7 @@ export default function AdminDashboard() {
           <Star
             key={star}
             className={`w-5 h-5 ${
-              star <= rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
+              star <= rating ? 'fill-[#780000] text-[#780000]' : 'text-gray-300'
             }`}
           />
         ))}
@@ -213,7 +213,7 @@ export default function AdminDashboard() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'pending':
-        return <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-800 border border-yellow-200">Pending</span>
+        return <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-[#D0A0A0] text-[#580000] border border-[#D0A0A0]">Pending</span>
       case 'processing':
         return <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">Processing</span>
       case 'completed':
@@ -384,7 +384,7 @@ export default function AdminDashboard() {
                         {pendingTab ? (
                           <>
                             <Button onClick={() => handleApprove(review.id)} className="bg-green-600 hover:bg-green-700 text-white" size="sm"><Check className="w-3 md:w-4 h-3 md:h-4 mr-1" /><span className="hidden md:inline">Approve</span></Button>
-                            <Button onClick={() => handleReject(review.id)} variant="outline" className="text-yellow-600 border-yellow-200 hover:bg-yellow-50" size="sm"><span className="hidden md:inline">Reject</span></Button>
+                            <Button onClick={() => handleReject(review.id)} variant="outline" className="text-[#780000] border-[#D0A0A0] hover:bg-[#E8D0D0]" size="sm"><span className="hidden md:inline">Reject</span></Button>
                           </>
                         ) : (
                           <Button onClick={() => handleDelete(review.id)} variant="outline" className="text-red-600 border-red-200 hover:bg-red-50" size="sm"><Trash2 className="w-3 md:w-4 h-3 md:h-4 mr-1" /><span className="hidden md:inline">Delete</span></Button>

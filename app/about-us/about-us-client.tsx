@@ -1,40 +1,45 @@
-"use client"
+'use client'
 
 import { useState, useEffect } from 'react'
-import { Shield, Users, Globe2, TrendingUp, CheckCircle2, Database, Clock, Award, Building2, Heart, Zap, Eye } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import {
+  Shield, Users, Globe2, CheckCircle2, Database, Clock,
+  Award, Heart, Zap, Eye
+} from 'lucide-react'
 import Image from 'next/image'
 
 const stats = [
-  { value: 900, suffix: '+', label: 'Global Databases', icon: Database },
-  { value: 5, suffix: 'M+', label: 'Reports Generated', icon: CheckCircle2 },
-  { value: 50, suffix: '+', label: 'Countries Covered', icon: Globe2 },
-  { value: 24, suffix: '/7', label: 'Support Available', icon: Clock }
+  { value: 900, suffix: '+', label: 'Data Sources Worldwide', icon: Database },
+  { value: 5, suffix: 'M+', label: 'Vehicle Reports Delivered', icon: CheckCircle2 },
+  { value: 50, suffix: '+', label: 'Countries Supported', icon: Globe2 },
+  { value: 24, suffix: '/7', label: 'Customer Support', icon: Clock }
 ]
 
 const values = [
   {
     icon: Shield,
-    title: 'Trust & Transparency',
-    description: 'Every report we generate is backed by data from verified sources across 900+ global databases, ensuring accuracy and reliability.'
+    title: 'Verified & Trusted Data',
+    description:
+      'We collect and analyze vehicle data from trusted global databases to ensure every report is accurate, reliable, and up to date.'
   },
   {
     icon: Users,
-    title: 'Customer Excellence',
-    description: 'We place your needs at the forefront, providing exceptional support and guidance throughout your vehicle history journey.'
+    title: 'Built for Buyers & Sellers',
+    description:
+      'Our platform helps both buyers and sellers make confident decisions with complete transparency and reduced risk.'
   },
   {
     icon: Eye,
-    title: 'Complete Visibility',
-    description: 'Comprehensive insights into vehicle history, from accident records to ownership changes, giving you the full picture.'
+    title: 'Full Vehicle Transparency',
+    description:
+      'From accident history to mileage checks, we reveal the complete truth behind every vehicle before you buy.'
   },
   {
     icon: Zap,
-    title: 'Innovation Driven',
-    description: 'Leveraging cutting-edge technology and blockchain to revolutionize how vehicle history information is accessed and verified.'
+    title: 'Fast Digital Reports',
+    description:
+      'Instant online reports powered by advanced technology so you can make decisions without delays.'
   }
 ]
-
 
 export default function AboutUsClient() {
   const [isVisible, setIsVisible] = useState(false)
@@ -43,240 +48,183 @@ export default function AboutUsClient() {
   useEffect(() => {
     setIsVisible(true)
 
-    const duration = 2000
+    const duration = 1800
     const steps = 60
     const interval = duration / steps
 
-    const timers = stats.map((stat, index) => {
-      let currentValue = 0
-      const increment = stat.value / steps
+    stats.forEach((stat, index) => {
+      let current = 0
+      const inc = stat.value / steps
 
-      return setInterval(() => {
-        currentValue += increment
-        if (currentValue >= stat.value) {
-          currentValue = stat.value
-          clearInterval(timers[index])
+      const timer = setInterval(() => {
+        current += inc
+        if (current >= stat.value) {
+          current = stat.value
+          clearInterval(timer)
         }
+
         setCounters(prev => {
-          const newCounters = [...prev]
-          newCounters[index] = Math.floor(currentValue)
-          return newCounters
+          const updated = [...prev]
+          updated[index] = Math.floor(current)
+          return updated
         })
       }, interval)
     })
-
-    return () => timers.forEach(timer => clearInterval(timer))
   }, [])
 
   return (
     <div className="bg-white">
-      <div className="relative bg-gradient-to-b from-slate-50 to-white overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        <div className="relative container mx-auto px-4 sm:px-6 py-12 sm:py-20 md:py-32">
-          <div className={`max-w-4xl mx-auto text-center space-y-6 sm:space-y-8 transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-            <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 bg-blue-50 border border-blue-200 rounded-full">
-              <Building2 className="w-3 sm:w-4 h-3 sm:h-4 text-blue-600" />
-              <span className="text-2xs sm:text-sm font-semibold text-blue-900">About AutoFactsCheck</span>
-            </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight">
-              Driving Transparency in the Automotive Industry
-            </h1>
+      {/* HERO */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#780000]/10 via-white to-gray-50">
 
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              We empower millions of buyers and sellers with comprehensive vehicle history reports, making every transaction safer and more transparent.
-            </p>
-          </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#78000015,transparent_60%)]" />
+
+        <div className="container mx-auto px-4 py-20 text-center max-w-4xl">
+
+          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#780000]/10 text-[#780000] font-semibold border border-[#780000]/20">
+            <Shield size={16} /> About AutoRevealed
+          </span>
+
+          <h1 className="text-4xl md:text-6xl font-extrabold mt-6 leading-tight">
+            Driving <span className="text-[#780000]">Trust</span> Through Vehicle Data
+          </h1>
+
+          <p className="text-gray-600 mt-5 text-lg">
+            AutoRevealed is a digital vehicle history platform built to help people make safer,
+            smarter, and more transparent car buying decisions.
+          </p>
+
         </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div className={`grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 max-w-5xl mx-auto transform transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-          {stats.map((stat, index) => (
+      {/* STATS */}
+      <div className="container mx-auto px-4 py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+
+          {stats.map((s, i) => (
             <div
-              key={index}
-              className="text-center space-y-2 sm:space-y-3 p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl bg-white border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
+              key={i}
+              className="group bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm hover:shadow-xl hover:border-[#780000]/30 transition-all"
             >
-              <div className="flex justify-center">
-                <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-blue-50 flex items-center justify-center">
-                  <stat.icon className="w-5 sm:w-6 h-5 sm:h-6 text-blue-600" />
-                </div>
+              <div className="w-12 h-12 mx-auto rounded-xl bg-[#780000]/10 flex items-center justify-center group-hover:scale-110 transition">
+                <s.icon className="text-[#780000]" />
               </div>
-              <div className="text-3xl sm:text-4xl font-bold text-gray-900">
-                {counters[index]}{stat.suffix}
-              </div>
-              <div className="text-xs sm:text-sm font-medium text-gray-600">{stat.label}</div>
+
+              <h2 className="text-3xl font-bold mt-3 text-gray-900">
+                {counters[i]}{s.suffix}
+              </h2>
+
+              <p className="text-sm text-gray-600 mt-1">{s.label}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="bg-gradient-to-b from-white to-slate-50 py-12 sm:py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className={`max-w-6xl mx-auto transform transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
-              <div className="space-y-4 sm:space-y-5 md:space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-2 bg-blue-50 rounded-full">
-                  <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                  <span className="text-2xs sm:text-sm font-semibold text-blue-900">Our Story</span>
-                </div>
+      {/* STORY */}
+      <div className="bg-gradient-to-b from-white to-gray-50 py-16">
+        <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
 
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  Building Trust Through Technology
-                </h2>
+          <div className="space-y-5">
 
-                <div className="space-y-4 sm:space-y-5 text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed">
-                  <p>
-                   Founded in January 2026, we are a digital automotive verification platform dedicated to bringing transparency and trust to the vehicle marketplace. Our website was created with a clear purpose: to help buyers make informed decisions by providing reliable and verified vehicle history reports online.
-                  </p>
-                  <p>
-                    We specialize in delivering detailed digital vehicle reports that include essential history data, helping customers identify potential risks before purchasing a vehicle. By using verified data sources and modern technology, we aim to reduce uncertainty, prevent fraud, and build confidence in every car transaction.
-                  </p>
-               
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
-                  <div className="flex items-center gap-2">
-                    <Award className="w-4 sm:w-5 h-4 sm:h-5 text-blue-600" />
-                    <span className="text-2xs sm:text-sm font-medium text-gray-700">Industry Leader</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Heart className="w-4 sm:w-5 h-4 sm:h-5 text-blue-600" />
-                    <span className="text-2xs sm:text-sm font-medium text-gray-700">Customer Trusted</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl sm:rounded-3xl transform rotate-3"></div>
-                <div className="relative bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 border border-gray-200">
-                  <div className="space-y-6 sm:space-y-8">
-                    <div className="space-y-3 sm:space-y-4">
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">Our Mission</h3>
-                      <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed">
-                        To create a transparent automotive marketplace where every buyer has access to complete and verified vehicle history information before making a purchase decision.
-                      </p>
-                    </div>
-
-                    <div className="border-t border-gray-200 pt-4 sm:pt-6 space-y-3 sm:space-y-4">
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">Our Vision</h3>
-                      <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed">
-                        A world where vehicle fraud is eliminated and every car transaction is built on trust, transparency, and verified data.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
-        <div className={`max-w-6xl mx-auto space-y-8 sm:space-y-10 md:space-y-12 transform transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-          <div className="text-center space-y-3 sm:space-y-4 max-w-3xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">Our Core Values</h2>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600">
-              The principles that guide our work and define who we are
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className="group bg-white border border-gray-200 rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 hover:border-blue-300 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="flex items-start gap-4 sm:gap-5 md:gap-6">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-lg sm:rounded-xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                      <value.icon className="w-6 sm:w-7 h-6 sm:h-7 text-blue-600" strokeWidth={2} />
-                    </div>
-                  </div>
-                  <div className="space-y-2 sm:space-y-3">
-                    <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900">{value.title}</h3>
-                    <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">{value.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-slate-50 py-12 sm:py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className={`max-w-5xl mx-auto space-y-8 sm:space-y-10 md:space-y-12 transform transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-            <div className="text-center space-y-3 sm:space-y-4">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">Our Journey</h2>
-              <p className="text-sm sm:text-base md:text-lg text-gray-600">Key milestones in our growth</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-10 md:mb-12">
-              <div className="relative h-48 sm:h-56 md:h-60 lg:h-64 rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="https://images.pexels.com/photos/3803517/pexels-photo-3803517.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Technology innovation"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div className="p-4 sm:p-5 md:p-6">
-                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-white">Innovation First</h3>
-                    <p className="text-xs sm:text-sm text-white/90">Blockchain-powered verification</p>
-                  </div>
-                </div>
-              </div>
-              <div className="relative h-48 sm:h-56 md:h-60 lg:h-64 rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Vehicle technology"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-                  <div className="p-4 sm:p-5 md:p-6">
-                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-white">Global Coverage</h3>
-                    <p className="text-xs sm:text-sm text-white/90">50+ countries worldwide</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-
-      <div className="relative bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 py-12 sm:py-16 md:py-20">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        <div className={`relative container mx-auto px-4 sm:px-6 transform transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-          <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-              Ready to Make an Informed Decision?
+            <h2 className="text-3xl md:text-5xl font-bold">
+              Why We Built <span className="text-[#780000]">AutoRevealed</span>
             </h2>
 
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Join millions of satisfied customers who trust AutoFactsCheck for comprehensive vehicle history reports. Start your journey with confidence today.
+            <p className="text-gray-600 leading-relaxed">
+              Buying a used car can be risky. Hidden accidents, mileage fraud, and incomplete history
+              often lead to financial loss. We created AutoRevealed to solve this problem.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-4">
-              <Button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-6 sm:px-8 py-3 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300">
-                Get Your Report
-              </Button>
-              {/* <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold px-6 sm:px-8 py-3 sm:py-4 md:py-6 text-sm sm:text-base md:text-lg rounded-lg transition-all duration-300">
-                Contact Sales
-              </Button> */}
+            <p className="text-gray-600">
+              Our platform gives you instant access to verified vehicle history reports so you can
+              avoid scams and make confident decisions before buying any vehicle.
+            </p>
+
+            <div className="flex gap-4 pt-2">
+              <div className="flex items-center gap-2 text-gray-700">
+                <Award className="text-[#780000]" /> Trusted Reports
+              </div>
+              <div className="flex items-center gap-2 text-gray-700">
+                <Heart className="text-[#780000]" /> User Focused
+              </div>
+            </div>
+
+          </div>
+
+          <div className="relative">
+            <div className="absolute -inset-4 bg-[#780000]/10 rounded-3xl blur-2xl"></div>
+
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border">
+              <Image
+                src="/about-car.jpg"
+                alt="About"
+                width={800}
+                height={500}
+                className="object-cover"
+              />
+
+              <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 p-6 text-white">
+                <h3 className="text-xl font-bold">Global Vehicle Intelligence</h3>
+                <p className="text-sm text-white/80">
+                  Accurate data • Real-time reports • Trusted insights
+                </p>
+              </div>
+
             </div>
           </div>
+
         </div>
       </div>
+
+      {/* VALUES */}
+      <div className="container mx-auto px-4 py-20">
+
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold">
+            Our <span className="text-[#780000]">Core Values</span>
+          </h2>
+          <p className="text-gray-600 mt-3">
+            The principles that define how we build trust and deliver value
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+
+          {values.map((v, i) => (
+            <div
+              key={i}
+              className="p-6 rounded-2xl border bg-white hover:shadow-xl hover:border-[#780000]/30 transition"
+            >
+              <div className="w-12 h-12 rounded-xl bg-[#780000]/10 flex items-center justify-center mb-4">
+                <v.icon className="text-[#780000]" />
+              </div>
+
+              <h3 className="text-xl font-bold">{v.title}</h3>
+              <p className="text-gray-600 mt-2">{v.description}</p>
+            </div>
+          ))}
+
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div className="bg-gradient-to-r from-[#780000] to-black py-16 text-center text-white">
+
+        <h2 className="text-3xl md:text-5xl font-bold">
+          Start Your Vehicle Check Today
+        </h2>
+
+        <p className="text-white/80 mt-3">
+          Get instant reports and protect yourself from risky car purchases
+        </p>
+
+        <button className="mt-6 bg-white text-[#780000] hover:bg-gray-200 font-bold px-8 py-3 rounded-xl">
+          Get Report Now
+        </button>
+
+      </div>
+
     </div>
-  );
+  )
 }

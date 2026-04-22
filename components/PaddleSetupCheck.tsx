@@ -203,7 +203,7 @@ export default function PaddleSetupCheck() {
                 : result.status === "❌"
                   ? "bg-red-50 border-red-200"
                   : result.status === "⚠️"
-                    ? "bg-yellow-50 border-yellow-200"
+                    ? "bg-[#E8D0D0] border-[#D0A0A0]"
                     : "bg-blue-50 border-blue-200"
                 }`}
             >
@@ -246,14 +246,14 @@ export default function PaddleSetupCheck() {
           className="mt-8 bg-gray-900 text-gray-100 rounded-lg p-4 font-mono text-xs overflow-auto"
           style={{ maxHeight: "300px" }}
         >
-          <div className="mb-2 font-bold text-blue-300">Debug Information:</div>
+          <div className="mb-2 font-bold text-primary/80">Debug Information:</div>
           <div>Token: {process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN}</div>
           <div>Env: {process.env.NEXT_PUBLIC_PADDLE_ENV}</div>
           <div>window.Paddle exists: {(window as any).Paddle ? "✅ yes" : "❌ no"}</div>
           <div>Paddle.Setup exists: {(window as any).Paddle?.Setup ? "✅ yes" : "❌ no"}</div>
           <div>Paddle.Checkout exists: {(window as any).Paddle?.Checkout ? "✅ yes" : "❌ no"}</div>
           <div>Paddle.Checkout.open exists: {(window as any).Paddle?.Checkout?.open ? "✅ yes" : "❌ no"}</div>
-          <div className="mt-2 text-yellow-400">
+          <div className="mt-2 text-[#780000]">
             Check browser DevTools Console for additional logs
           </div>
         </div>

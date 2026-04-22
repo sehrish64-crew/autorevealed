@@ -24,45 +24,57 @@ export default function Footer() {
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null)
 
   return (
-    <footer className="relative bg-gray-900 text-white overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
+    <footer className="relative overflow-hidden text-white bg-gradient-to-b from-black via-[#120000] to-black">
 
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl"></div>
+      {/* glow */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#780000]/30 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#780000]/20 rounded-full blur-[140px]" />
 
-      <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8">
-        <div className="border-b border-gray-800 pb-4 sm:pb-5">
-          <div className="flex flex-col items-center gap-3 sm:gap-4">
-            <p className="text-center text-gray-400 text-xs sm:text-xs md:text-sm lg:text-sm leading-tight sm:leading-relaxed" style={{ fontSize: '11px' }}>
-              <span className="block mb-1.5 sm:mb-2 md:mb-0 md:inline">Allied Timber VIN Reports. All Rights Reserved. {new Date().getFullYear()} © AutoFactsCheck. Use of this Website constitutes acceptance of{' '}</span>
+      <div className="relative max-w-7xl mx-auto px-6 py-12">
 
-              <Link href="/terms" className="text-blue-400 hover:text-blue-300 transition-colors">
-                <u>Terms & Conditions</u>
-              </Link>
-              {', '}
-              <Link href="/privacy" className="text-blue-400 hover:text-blue-300 transition-colors">
-                <u>Privacy Policy</u>
-              </Link>
-              {', '}
-              <Link href="/refund-policy" className="text-blue-400 hover:text-blue-300 transition-colors">
-                <u>Refund Policy</u>
-              </Link>
-              <span className="block md:inline md:mx-1">.</span>
-              <span className="block md:inline">This site is owned and operated by Allied Timber - an approved NMVTIS data provider. <u>Email: Info@autofactscheck.com</u></span>
-            </p>
+        {/* TEXT */}
+        <div className="border-b border-white/10 pb-6 text-center">
+          <p className="text-[11px] sm:text-xs md:text-sm text-white/70 leading-relaxed">
+
+            <span className="block mb-2">
+              Allied Timber VIN Reports. All Rights Reserved. {new Date().getFullYear()} © AutoRevealed. Use of this Website constitutes acceptance of{' '}
+            </span>
+
+            <Link href="/terms" className="text-[#ccc] hover:text-red-400 transition">
+             <u> Terms & Conditions</u>
+            </Link>
+            {' , '}
+            <Link href="/privacy" className="text-[#ccc] hover:text-red-400 transition">
+             <u> Privacy Policy</u>
+            </Link>
+            {' , '}
+            <Link href="/refund-policy" className="text-[#ccc] hover:text-red-400 transition">
+             <u> Refund Policy</u>
+            </Link>
+
+            <span className="block mt-2">
+              This site is owned and operated by Allied Timber - an approved NMVTIS data provider.
+              <span className="text-white/90"> Email: Info@autorevealed.com</span>
+            </span>
+
+          </p>
+        </div>
+
+        {/* PAYMENT */}
+        <div className="flex justify-center mt-6">
+          <div className="flex items-center gap-6 bg-white/5 border border-white/10 px-6 py-3 rounded-2xl backdrop-blur-md">
+
+            <img src="/paypal-icon.svg" className="h-6 opacity-80 hover:opacity-100 transition" />
+            <img src="/master-card-icon.svg" className="h-6 opacity-80 hover:opacity-100 transition" />
+            <img src="/visa-icon.svg" className="h-6 opacity-80 hover:opacity-100 transition" />
+            <img src="/norton-extra-text-icon.svg" className="h-6 opacity-80 hover:opacity-100 transition" />
+
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center mt-3 sm:mt-4 gap-4 sm:gap-6">
-          <div className="flex items-center gap-3 sm:gap-4 md:gap-6 flex-wrap justify-center">
-            <img src="/paypal-icon.svg" alt="PayPal" className="h-5 sm:h-6 md:h-7 w-auto opacity-80 hover:opacity-100 transition-opacity" />
-            <img src="/master-card-icon.svg" alt="MasterCard" className="h-5 sm:h-6 md:h-7 w-auto opacity-80 hover:opacity-100 transition-opacity" />
-            <img src="/visa-icon.svg" alt="Visa" className="h-5 sm:h-6 md:h-7 w-auto opacity-80 hover:opacity-100 transition-opacity" />
-            <img src="/norton-extra-text-icon.svg" alt="Norton" className="h-5 sm:h-6 md:h-7 w-auto opacity-80 hover:opacity-100 transition-opacity" />
-          </div>
-        </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+
+      <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#780000] to-transparent" />
     </footer>
   )
 }

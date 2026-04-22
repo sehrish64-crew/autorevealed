@@ -138,34 +138,34 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
   return (
     <>
       <div className="fixed inset-0 bg-black/50 z-[9998]" onClick={onClose} />
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white z-[9999] rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background z-[9999] rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         <div className="p-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
               Get Vehicle Report
             </h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              className="p-2 hover:bg-muted rounded-lg transition-colors"
             >
-              <X className="w-6 h-6 text-gray-600" />
+              <X className="w-6 h-6 text-muted-foreground" />
             </button>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <Label className="block text-sm font-semibold text-gray-900 mb-2">
+              <Label className="block text-sm font-semibold text-foreground mb-2">
                 Search By
               </Label>
               <div className="mb-2">
-                <div className="inline-flex items-center bg-gray-100 rounded-full p-1 gap-1">
+                <div className="inline-flex items-center bg-muted rounded-full p-1 gap-1">
                   <button
                     type="button"
                     onClick={() => setVehicleIdType('vin')}
                     className={`flex items-center gap-2 px-3 py-1 rounded-full transition-all ${
                       vehicleIdType === 'vin'
-                        ? 'bg-gradient-to-r from-yellow-400 to-yellow-300 text-gray-900 shadow'
-                        : 'text-black hover:bg-gray-200'
+                        ? 'bg-primary text-primary-foreground shadow'
+                        : 'text-foreground hover:bg-muted/80'
                     }`}
                   >
                     <Key className="w-4 h-4" />
@@ -176,8 +176,8 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                     onClick={() => setVehicleIdType('plate')}
                     className={`flex items-center gap-2 px-3 py-1 rounded-full transition-all ${
                       vehicleIdType === 'plate'
-                        ? 'bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow'
-                        : 'text-black hover:bg-gray-200'
+                        ? 'bg-secondary text-secondary-foreground shadow'
+                        : 'text-foreground hover:bg-muted/80'
                     }`}
                   >
                     <Hash className="w-4 h-4" />
@@ -189,7 +189,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
 
             {vehicleIdType === 'vin' ? (
               <div>
-                <Label htmlFor="vin" className="block text-sm font-semibold text-gray-900 mb-2">
+                <Label htmlFor="vin" className="block text-sm font-semibold text-foreground mb-2">
                   VIN Number
                 </Label>
                 <div className="relative">
@@ -205,12 +205,12 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                   />
                   <button
                     type="button"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                   >
                     <HelpCircle className="w-5 h-5" />
                   </button>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   Enter your 17-character Vehicle Identification Number
                 </p>
               </div>
@@ -218,7 +218,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
               <div>
                 <Label
                   htmlFor="plate"
-                  className="block text-sm font-semibold text-gray-900 mb-2"
+                  className="block text-sm font-semibold text-foreground mb-2"
                 >
                   Plate Number
                 </Label>
@@ -238,7 +238,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
             )}
 
             <div>
-              <Label htmlFor="vehicleType" className="block text-sm font-semibold text-gray-900 mb-2">
+              <Label htmlFor="vehicleType" className="block text-sm font-semibold text-foreground mb-2">
                 Vehicle Type
               </Label>
               <Select value={vehicleType} onValueChange={setVehicleType}>
@@ -256,7 +256,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
             </div>
 
             <div>
-              <Label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
+              <Label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
                 Email Address
               </Label>
               <Input
@@ -271,7 +271,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
             </div>
 
             <div>
-              <Label className="block text-sm font-semibold text-gray-900 mb-2">Country</Label>
+              <Label className="block text-sm font-semibold text-foreground mb-2">Country</Label>
               <Select
                 value={selectedCountryCode}
                 onValueChange={(v) => {
@@ -319,12 +319,12 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                     onClick={() => setSelectedPackage(pkg.id)}
                     className={`p-3 rounded-lg border-2 transition-all text-center ${
                       selectedPackage === pkg.id
-                        ? 'bg-blue-100 border-blue-500 shadow-lg'
-                        : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-md'
+                        ? 'bg-primary/10 border-primary shadow-lg'
+                        : 'bg-background border-border hover:border-primary/30 hover:shadow-md'
                     }`}
                   >
-                    <div className="font-bold text-sm">{pkg.name}</div>
-                    <div className="text-xs text-gray-600 mt-2">
+                    <div className="font-bold text-sm text-foreground">{pkg.name}</div>
+                    <div className="text-xs text-muted-foreground mt-2">
                       {formatCurrency(
                         getPrice(pkg.id as any, selectedCountry.currency),
                         selectedCountry.currency
@@ -336,8 +336,8 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
             </div>
 
             {error && (
-              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-sm text-red-600">{error}</p>
+              <div className="p-4 bg-destructive/10 border border-destructive/30 rounded-lg">
+                <p className="text-sm text-destructive">{error}</p>
               </div>
             )}
 
@@ -353,7 +353,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
               </Button>
               <Button
                 type="submit"
-                className="flex-1 h-12 bg-blue-600 hover:bg-blue-700 text-white"
+                className="flex-1 h-12 bg-primary hover:bg-primary/90 text-primary-foreground"
                 disabled={isSubmitting || !selectedPackage}
               >
                 {isSubmitting

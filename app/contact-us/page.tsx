@@ -5,12 +5,12 @@ import ContactUsClient from './contact-us-client'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Contact AutoFactsCheck - Customer Support',
-  description: 'Get in touch with AutoFactsCheck for any inquiries, support, or sales questions. Available 24/7 to help you.',
+  title: 'Contact AutoRevealed - Customer Support',
+  description: 'Get in touch with AutoRevealed for any inquiries, support, or sales questions. Available 24/7 to help you.',
   openGraph: {
-    title: 'Contact TrueAutoCheck',
+    title: 'Contact AutoRevealed',
     description: 'Reach out to our customer support team for assistance with vehicle history reports.',
-    url: 'https://trueautocheck.com/contact-us',
+    url: 'https://autorevealed.com/contact-us',
     type: 'website',
   },
 }

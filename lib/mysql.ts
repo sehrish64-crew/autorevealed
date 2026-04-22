@@ -3,9 +3,9 @@ import mysql from 'mysql2/promise'
 const {
   DB_HOST = '127.0.0.1',
   DB_PORT = '3306',
-  DB_USER = 'u319625572_trueautocheck',
-  DB_PASSWORD = 'Trueautocheck321@',
-  DB_NAME = 'u319625572_trueautocheck',
+  DB_USER = 'u319625572_autorevealed',
+  DB_PASSWORD = 'Autorevealed321@',
+  DB_NAME = 'u319625572_autorevealed',
 } = process.env
 
 console.log('\n📦 Database Configuration:')

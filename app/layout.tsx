@@ -57,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const tmap = getTranslationsForLang(lang)
 
   return {
-    title: `AutoFactsCheck - ${tmap['banner_title'] || "Check any car's history"}`,
+    title: `AutoRevealed- ${tmap['banner_title'] || "Check any car's history"}`,
     keywords: ['car history', 'vehicle report', 'VIN check', 'used car', 'vehicle history check', 'car background check'],
     authors: [{ name: 'AutoFactsCheck' }],
     creator: 'AutoFactsCheck',
@@ -71,7 +71,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: 'website',
       url: 'https://autofactscheck.com',
-      title: `AutoFactsCheck - ${tmap['banner_title'] || "Check any car's history"}`,
+      title: `AutoRevealed- ${tmap['banner_title'] || "Check any car's history"}`,
       siteName: 'AutoFactsCheck',
       images: [
         { url: 'https://autofactscheck.com/banner-hero.png', width: 1200, height: 630 },
@@ -79,7 +79,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `TrueAutoCheck - ${tmap['banner_title'] || "Check any car's history"}`,
+      title: `AutoRevealed - ${tmap['banner_title'] || "Check any car's history"}`,
       description: tmap['banner_subtitle'] || "VIN Check Can Save You Thousands — Get a Full Vehicle History Report",
       images: [
         { url: 'https://autofactscheck.com/banner-hero.png' },

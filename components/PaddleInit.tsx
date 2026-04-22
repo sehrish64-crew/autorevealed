@@ -23,7 +23,7 @@ const PADDLE_CLIENT_TOKEN = process.env.NEXT_PUBLIC_PADDLE_BILLING_TOKEN || ''
 const PACKAGE_INFO: Record<'basic' | 'standard' | 'premium', { color: string; description: string }> = {
   basic: { color: 'bg-blue-500 hover:bg-blue-600', description: 'Essential vehicle history' },
   standard: { color: 'bg-cyan-500 hover:bg-cyan-600', description: 'Comprehensive report' },
-  premium: { color: 'bg-yellow-500 hover:bg-yellow-600', description: 'Complete vehicle history' },
+  premium: { color: 'bg-primary hover:bg-primary/90', description: 'Complete vehicle history' },
 }
 
 const PACKAGE_NAMES: Record<'basic' | 'standard' | 'premium', string> = {

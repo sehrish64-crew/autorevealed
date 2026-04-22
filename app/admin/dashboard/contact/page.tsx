@@ -108,7 +108,7 @@ export default function AdminContactPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'new':
-        return <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-800 border border-yellow-200">New</span>
+        return <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-[#D0A0A0] text-[#580000] border border-[#D0A0A0]">New</span>
       case 'read':
         return <span className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">Read</span>
       case 'responded':

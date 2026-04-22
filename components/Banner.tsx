@@ -96,7 +96,7 @@ export default function Banner() {
                     <button 
                       type="button" 
                       onClick={() => setVehicleIdType('vin')} 
-                      className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 rounded-full transition-all text-xs sm:text-sm font-medium ${isHydrated && vehicleIdType === 'vin' ? 'bg-gradient-to-r from-yellow-400 to-yellow-300 text-gray-900 shadow' : 'text-black hover:bg-white/10'}`}
+                      className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 rounded-full transition-all text-xs sm:text-sm font-medium ${isHydrated && vehicleIdType === 'vin' ? 'bg-[#780000] text-white shadow' : 'text-black hover:bg-white/10'}`}
                       suppressHydrationWarning
                     >
                       <Key className="w-3 sm:w-4 h-3 sm:h-4" />
@@ -166,7 +166,7 @@ export default function Banner() {
                 <div className="mt-2 sm:mt-3 md:mt-4 flex">
                   <Button
                     onClick={isHydrated && vehicleIdType === 'vin' ? handleDecodeVIN : handleGetReport}
-                    className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-bold h-10 sm:h-12 px-4 sm:px-8 w-full shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                    className="bg-[#780000] hover:bg-[#580000] text-white font-bold h-10 sm:h-12 px-4 sm:px-8 w-full shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                     disabled={isHydrated && vehicleIdType === 'vin' ? !vin.trim() || isLoadingReport : !plateNumber.trim()}
                     suppressHydrationWarning
                   >
@@ -200,35 +200,35 @@ export default function Banner() {
                 <p className="text-xs sm:text-sm text-white/90">{t('banner_report_subtitle')}</p>
                 <div className="grid grid-cols-2 gap-x-3 sm:gap-x-6 gap-y-1.5 sm:gap-y-2 mt-2 sm:mt-3">
                   <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/95">
-                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-[#780000] flex-shrink-0" />
                     <span>{t('banner_checks_damage')}</span>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/95">
-                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-[#780000] flex-shrink-0" />
                     <span>{t('banner_checks_market_value')}</span>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/95">
-                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-[#780000] flex-shrink-0" />
                     <span>{t('banner_checks_mileage')}</span>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/95">
-                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-[#780000] flex-shrink-0" />
                     <span>{t('banner_checks_more')}</span>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/95">
-                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-[#780000] flex-shrink-0" />
                     <span>{t('banner_checks_specs')}</span>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/95">
-                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-[#780000] flex-shrink-0" />
                     <span>{t('banner_checks_title_check')}</span>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/95">
-                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-[#780000] flex-shrink-0" />
                     <span>{t('banner_checks_safety_ratings')}</span>
                   </div>
                   <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-white/95">
-                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-3 sm:w-4 h-3 sm:h-4 text-[#780000] flex-shrink-0" />
                     <span>{t('banner_checks_natural_disaster')}</span>
                   </div>
                 </div>
@@ -236,12 +236,12 @@ export default function Banner() {
             </div>
           </div>
 
-          <div className="hidden md:flex justify-center items-center relative">
+          {/* <div className="hidden md:flex justify-center items-center relative">
             <div className="relative w-full max-w-md">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full blur-3xl opacity-20 animate-pulse"></div>
 
               <div className="relative animate-float">
-                <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 via-blue-500 to-cyan-500 rounded-3xl opacity-30 blur-2xl animate-spin-slow"></div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#780000] via-blue-500 to-cyan-500 rounded-3xl opacity-30 blur-2xl animate-spin-slow"></div>
 
                 <div className="relative bg-white/50 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl border border-white/20 transform hover:scale-105 transition-transform duration-500">
                   <div className="relative h-96">
@@ -262,7 +262,7 @@ export default function Banner() {
                 </div>
               </div>
 
-              <div className="absolute -top-8 -right-8 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center shadow-xl animate-bounce-slow z-10">
+              <div className="absolute -top-8 -right-8 w-24 h-24 bg-[#780000] rounded-full flex items-center justify-center shadow-xl animate-bounce-slow z-10">
                 <CheckCircle2 className="w-12 h-12 text-gray-900" strokeWidth={2.5} />
               </div>
 
@@ -270,7 +270,7 @@ export default function Banner() {
                 <Car className="w-10 h-10 text-white" strokeWidth={2} />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       </div>
@@ -391,7 +391,7 @@ export default function Banner() {
 
             {/* Professional Footer */}
             <div className="bg-slate-50 px-8 py-4 border-t border-slate-200 text-center text-xs text-slate-500">
-              <p>AutoFactsCheck Vehicle Report • Report Generated from NHTSA Database</p>
+              <p>AutoRevealedVehicle Report • Report Generated from NHTSA Database</p>
             </div>
           </div>
         </div>

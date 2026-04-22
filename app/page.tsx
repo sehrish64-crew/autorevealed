@@ -1,11 +1,10 @@
 import Banner from '@/components/Banner'
-import WhyTrueAutoCheck from '@/components/WhyTrueAutoCheck'
+import WhyAutoRevealed from '@/components/WhyAutoRevealed'
 import FeaturesGrid from '@/components/FeaturesGrid'
 import HowItWorks from '@/components/HowItWorks'
 import Testimonials from '@/components/Testimonials'
 import VinChecker from '@/components/VinChecker'
 import Support from '@/components/Support'
-import ChatWidget from '@/components/ChatWidget'
 
 export default function Home() {
   return (
@@ -16,8 +15,7 @@ export default function Home() {
       <Testimonials />
       <VinChecker />
       <Support />
-      <WhyTrueAutoCheck />
-      <ChatWidget position="right" />
+      <WhyAutoRevealed />
     </>
   );
 }

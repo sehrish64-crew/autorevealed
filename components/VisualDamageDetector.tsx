@@ -300,8 +300,8 @@ export default function VisualDamageDetector(): JSX.Element {
                 : result.overallAssessment === 'Severe'
                 ? 'bg-gradient-to-br from-red-50 to-orange-50 border-red-300'
                 : result.overallAssessment === 'Moderate'
-                ? 'bg-gradient-to-br from-orange-50 to-yellow-50 border-orange-300'
-                : 'bg-gradient-to-br from-yellow-50 to-amber-50 border-yellow-300'
+                ? 'bg-gradient-to-br from-[#E8D0D0] to-[#D0A0A0] border-[#D0A0A0]'
+                : 'bg-gradient-to-br from-[#E8D0D0] to-[#D0A0A0] border-[#D0A0A0]'
             }`}>
               <div className="flex items-center justify-between">
                 <div>
@@ -321,7 +321,7 @@ export default function VisualDamageDetector(): JSX.Element {
                     ? 'bg-red-200 text-red-900'
                     : result.overallAssessment === 'Moderate'
                     ? 'bg-orange-200 text-orange-900'
-                    : 'bg-yellow-200 text-yellow-900'
+                    : 'bg-[#D0A0A0] text-[#580000]'
                 }`}>
                   {result.overallAssessment}
                 </span>

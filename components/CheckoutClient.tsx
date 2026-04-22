@@ -62,10 +62,10 @@ export default function CheckoutClient({ order }: { order: any }) {
   if (!priceId) {
     return (
       <div className="p-4">
-        <div className="p-4 border rounded mb-4 bg-white">
+        <div className="p-4 border border-border rounded mb-4 bg-background">
           <h2 className="font-semibold">Package</h2>
           <div className="text-lg font-bold">{order.package_type}</div>
-          <div className="text-sm text-gray-600">{order.currency} {order.amount}</div>
+          <div className="text-sm text-muted-foreground">{order.currency} {order.amount}</div>
         </div>
         <div className="text-red-600">No Paddle price ID configured for {order.package_type}</div>
       </div>
@@ -82,9 +82,9 @@ export default function CheckoutClient({ order }: { order: any }) {
 
           <div className="flex-1 w-full">
             <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">{order.vehicle_make ? `${order.vehicle_make} ${order.vehicle_model || ''}` : packageKey}</h2>
-            <div className="mt-2 text-sm md:text-base text-gray-600">{packageKey} • {order.currency} {Number(displayAmount).toFixed(2)}</div>
+            <div className="mt-2 text-sm md:text-base text-muted-foreground">{packageKey} • {order.currency} {Number(displayAmount).toFixed(2)}</div>
 
-            <div className="mt-4 text-sm md:text-base text-gray-700 space-y-2">
+            <div className="mt-4 text-sm md:text-base text-foreground space-y-2">
               <div className="flex items-center gap-2"><span className="text-green-600">✓</span> Deep vehicle history check</div>
               <div className="flex items-center gap-2"><span className="text-green-600">✓</span> Ownership & accident records</div>
               <div className="flex items-center gap-2"><span className="text-green-600">✓</span> Photos & title status</div>
@@ -114,11 +114,11 @@ export default function CheckoutClient({ order }: { order: any }) {
               {error && <div className="text-red-600 mb-3">{error}</div>}
 
               <div className="flex items-baseline gap-3">
-                <div className="text-sm text-gray-600">Amount</div>
+                <div className="text-sm text-muted-foreground">Amount</div>
                 <div className="text-3xl md:text-4xl font-extrabold">{order.currency} {Number(displayAmount).toFixed(2)}</div>
               </div>
 
-              <div className="mt-3 text-sm text-gray-700">
+              <div className="mt-3 text-sm text-foreground">
                 Instant access to your vehicle report after payment.
               </div>
 
@@ -153,7 +153,7 @@ export default function CheckoutClient({ order }: { order: any }) {
       </aside>
       {/* Dev debug panel: shows raw vs normalized package and resolved Paddle priceId */}
       {process.env.NODE_ENV !== 'production' && (
-        <div className="mt-6 text-xs text-gray-600 bg-yellow-50 border border-yellow-100 p-3 rounded">
+        <div className="mt-6 text-xs text-foreground bg-accent/10 border border-accent/30 p-3 rounded">
           <div className="font-medium mb-1">Debug (dev only)</div>
           <div className="flex gap-3 flex-wrap">
             <div className="min-w-[220px]">raw package_type: <code className="bg-white px-1 rounded">{String(order?.package_type)}</code></div>
