@@ -21,7 +21,7 @@ interface GetReportFormProps {
   prefilledIdentValue?: string
 }
 
-const vehicleTypes = ['Car', 'Motorcycle', 'Truck', 'Boat', 'ATV', 'Campervan']
+const vehicleTypes = ['Car', 'Motorcycle', 'Truck', 'Boat', 'ATV', 'Campervan', 'Caravan']
 const packages = [
   { id: 'basic', name: 'Basic Report' },
   { id: 'standard', name: 'Standard Report' },
@@ -138,10 +138,10 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
   return (
     <>
       <div className="fixed inset-0 bg-black/50 z-[9998]" onClick={onClose} />
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background z-[9999] rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="p-8">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
+      <div className="fixed inset-4 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 bg-background z-[9999] rounded-2xl shadow-2xl w-auto sm:w-full sm:max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className="p-4 sm:p-8">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-foreground">
               Get Vehicle Report
             </h2>
             <button
@@ -152,36 +152,36 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
             </button>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             <div>
-              <Label className="block text-sm font-semibold text-foreground mb-2">
+              <Label className="block text-xs sm:text-sm font-semibold text-foreground mb-2">
                 Search By
               </Label>
               <div className="mb-2">
-                <div className="inline-flex items-center bg-muted rounded-full p-1 gap-1">
+                <div className="flex items-center bg-muted rounded-full p-1 gap-1 w-full">
                   <button
                     type="button"
                     onClick={() => setVehicleIdType('vin')}
-                    className={`flex items-center gap-2 px-3 py-1 rounded-full transition-all ${
+                    className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 rounded-full transition-all flex-1 justify-center ${
                       vehicleIdType === 'vin'
-                        ? 'bg-primary text-primary-foreground shadow'
-                        : 'text-foreground hover:bg-muted/80'
+                        ? 'bg-[#780000] text-white shadow'
+                        : 'text-foreground hover:bg-[#780000]/10'
                     }`}
                   >
                     <Key className="w-4 h-4" />
-                    <span className="text-sm font-medium">By VIN</span>
+                    <span className="text-xs sm:text-sm font-medium">By VIN</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setVehicleIdType('plate')}
-                    className={`flex items-center gap-2 px-3 py-1 rounded-full transition-all ${
+                    className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 rounded-full transition-all flex-1 justify-center ${
                       vehicleIdType === 'plate'
-                        ? 'bg-secondary text-secondary-foreground shadow'
-                        : 'text-foreground hover:bg-muted/80'
+                        ? 'bg-[#780000] text-white shadow'
+                        : 'text-foreground hover:bg-[#780000]/10'
                     }`}
                   >
                     <Hash className="w-4 h-4" />
-                    <span className="text-sm font-medium">By Plate</span>
+                    <span className="text-xs sm:text-sm font-medium">By Plate</span>
                   </button>
                 </div>
               </div>
@@ -189,7 +189,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
 
             {vehicleIdType === 'vin' ? (
               <div>
-                <Label htmlFor="vin" className="block text-sm font-semibold text-foreground mb-2">
+                <Label htmlFor="vin" className="block text-xs sm:text-sm font-semibold text-foreground mb-2">
                   VIN Number
                 </Label>
                 <div className="relative">
@@ -200,7 +200,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                     onChange={(e) => setVinNumber(e.target.value.toUpperCase())}
                     placeholder="Enter VIN number"
                     required
-                    className="h-12 pr-10"
+                    className="h-12 pr-10 border-[#780000]/30 focus:border-[#780000] focus:ring-[#780000]/20"
                     maxLength={17}
                   />
                   <button
@@ -210,15 +210,15 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                     <HelpCircle className="w-5 h-5" />
                   </button>
                 </div>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Enter your 17-character Vehicle Identification Number
+                <p className="text-xs sm:text-xs text-muted-foreground mt-1">
+                  Enter your 17-character VIN
                 </p>
               </div>
             ) : (
               <div>
                 <Label
                   htmlFor="plate"
-                  className="block text-sm font-semibold text-foreground mb-2"
+                  className="block text-xs sm:text-sm font-semibold text-foreground mb-2"
                 >
                   Plate Number
                 </Label>
@@ -229,7 +229,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                   onChange={(e) => setPlateNumber(e.target.value.toUpperCase())}
                   placeholder="Enter Plate Number"
                   required
-                  className="h-12"
+                  className="h-12 border-[#780000]/30 focus:border-[#780000] focus:ring-[#780000]/20"
                 />
                 <p className="text-xs text-gray-500 mt-1">
                   Enter your vehicle&apos;s license plate number
@@ -238,16 +238,16 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
             )}
 
             <div>
-              <Label htmlFor="vehicleType" className="block text-sm font-semibold text-foreground mb-2">
+              <Label htmlFor="vehicleType" className="block text-xs sm:text-sm font-semibold text-foreground mb-2">
                 Vehicle Type
               </Label>
               <Select value={vehicleType} onValueChange={setVehicleType}>
-                <SelectTrigger className="h-12">
+                <SelectTrigger className="h-12 border-[#780000]/30 focus:border-[#780000] focus:ring-[#780000]/20">
                   <SelectValue placeholder="Select vehicle type" />
                 </SelectTrigger>
                 <SelectContent className="z-[10000]">
                   {vehicleTypes.map((type) => (
-                    <SelectItem key={type} value={type}>
+                    <SelectItem key={type} value={type} className="hover:bg-[#780000]/10 focus:bg-[#780000]/10 cursor-pointer">
                       {type}
                     </SelectItem>
                   ))}
@@ -256,7 +256,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
             </div>
 
             <div>
-              <Label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
+              <Label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-foreground mb-2">
                 Email Address
               </Label>
               <Input
@@ -266,12 +266,12 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                 onChange={(e) => setCustomerEmail(e.target.value)}
                 placeholder="your.email@example.com"
                 required
-                className="h-12"
+                className="h-12 border-[#780000]/30 focus:border-[#780000] focus:ring-[#780000]/20"
               />
             </div>
 
             <div>
-              <Label className="block text-sm font-semibold text-foreground mb-2">Country</Label>
+              <Label className="block text-xs sm:text-sm font-semibold text-foreground mb-2">Country</Label>
               <Select
                 value={selectedCountryCode}
                 onValueChange={(v) => {
@@ -280,7 +280,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                   if (found) setSelectedCountry(found)
                 }}
               >
-                <SelectTrigger className="h-12">
+                <SelectTrigger className="h-12 border-[#780000]/30 focus:border-[#780000] focus:ring-[#780000]/20">
                   <SelectValue placeholder="Select country" />
                 </SelectTrigger>
                 <SelectContent className="z-[10000] max-h-60 overflow-auto">
@@ -308,23 +308,23 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
             </div>
 
             <div>
-              <Label className="block text-sm font-semibold text-gray-900 mb-4">
+              <Label className="block text-xs sm:text-sm font-semibold text-gray-900 mb-3 sm:mb-4">
                 Select Your Package
               </Label>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
                 {packages.map((pkg) => (
                   <button
                     key={pkg.id}
                     type="button"
                     onClick={() => setSelectedPackage(pkg.id)}
-                    className={`p-3 rounded-lg border-2 transition-all text-center ${
+                    className={`p-2 sm:p-3 rounded-lg border-2 transition-all text-center ${
                       selectedPackage === pkg.id
-                        ? 'bg-primary/10 border-primary shadow-lg'
-                        : 'bg-background border-border hover:border-primary/30 hover:shadow-md'
+                        ? 'bg-[#780000]/10 border-[#780000] shadow-lg'
+                        : 'bg-background border-[#780000]/20 hover:border-[#780000]/50 hover:shadow-md'
                     }`}
                   >
-                    <div className="font-bold text-sm text-foreground">{pkg.name}</div>
-                    <div className="text-xs text-muted-foreground mt-2">
+                    <div className="font-bold text-xs sm:text-sm text-foreground">{pkg.name}</div>
+                    <div className="text-xs text-muted-foreground mt-1 sm:mt-2">
                       {formatCurrency(
                         getPrice(pkg.id as any, selectedCountry.currency),
                         selectedCountry.currency
@@ -336,36 +336,31 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
             </div>
 
             {error && (
-              <div className="p-4 bg-destructive/10 border border-destructive/30 rounded-lg">
-                <p className="text-sm text-destructive">{error}</p>
+              <div className="p-3 sm:p-4 bg-destructive/10 border border-destructive/30 rounded-lg">
+                <p className="text-xs sm:text-sm text-destructive">{error}</p>
               </div>
             )}
 
-            <div className="flex gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 pt-3 sm:pt-4">
               <Button
                 type="button"
                 variant="outline"
                 onClick={onClose}
-                className="flex-1 h-12"
+                className="flex-1 h-10 sm:h-12 text-xs sm:text-sm border-[#780000]/30 text-[#780000] hover:bg-[#780000]/10"
                 disabled={isSubmitting}
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="flex-1 h-12 bg-primary hover:bg-primary/90 text-primary-foreground"
+                className="flex-1 h-10 sm:h-12 bg-gradient-to-r from-[#780000] to-[#a00000] hover:shadow-lg text-white text-xs sm:text-sm"
                 disabled={isSubmitting || !selectedPackage}
               >
-                {isSubmitting
-                  ? 'Processing...'
-                  : `Continue to Payment - ${
-                      selectedPackage
-                        ? formatCurrency(
-                            getPrice(selectedPackage as any, selectedCountry.currency),
-                            selectedCountry.currency
-                          )
-                        : '$0'
-                    }`}
+                <span className="hidden sm:inline">{isSubmitting ? 'Processing...' : 'Continue to Payment'}</span>
+                <span className="sm:hidden">{isSubmitting ? '...' : 'Pay'}</span>
+                {!isSubmitting && selectedPackage && (
+                  <span className="hidden sm:inline"> - {formatCurrency(getPrice(selectedPackage as any, selectedCountry.currency), selectedCountry.currency)}</span>
+                )}
               </Button>
             </div>
           </form>
