@@ -18,7 +18,12 @@ interface PaddleWindow extends Window {
 }
 
 const PADDLE_SCRIPT_URL = 'https://cdn.paddle.com/paddle/v2/paddle.js'
-const PADDLE_CLIENT_TOKEN = process.env.NEXT_PUBLIC_PADDLE_BILLING_TOKEN || ''
+const paddleEnv = process.env.NEXT_PUBLIC_PADDLE_ENV || 'sandbox'
+const isProd = paddleEnv === 'production' || paddleEnv === 'live'
+
+const PADDLE_CLIENT_TOKEN = isProd 
+  ? (process.env.NEXT_PUBLIC_LIVE_PADDLE_BILLING_TOKEN || process.env.NEXT_PUBLIC_PADDLE_BILLING_TOKEN)
+  : (process.env.NEXT_PUBLIC_PADDLE_BILLING_TOKEN || process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN)
 
 const PACKAGE_INFO: Record<'basic' | 'standard' | 'premium', { color: string; description: string }> = {
   basic: { color: 'bg-blue-500 hover:bg-blue-600', description: 'Essential vehicle history' },
@@ -49,7 +54,10 @@ export default function PaddleInit() {
     const w = window as PaddleWindow
 
     if (w.Paddle) {
-      w.Paddle.Initialize?.({ token: PADDLE_CLIENT_TOKEN })
+      if (!isProd) w.Paddle.Environment.set('sandbox');
+      w.Paddle.Initialize?.({ 
+        token: PADDLE_CLIENT_TOKEN
+      })
       setInitialized(true)
       return
     }
@@ -58,7 +66,10 @@ export default function PaddleInit() {
     script.src = PADDLE_SCRIPT_URL
     script.async = true
     script.onload = () => {
-      w.Paddle?.Initialize?.({ token: PADDLE_CLIENT_TOKEN })
+      if (!isProd) w.Paddle.Environment.set('sandbox');
+      w.Paddle?.Initialize?.({ 
+        token: PADDLE_CLIENT_TOKEN
+      })
       setInitialized(true)
       console.log('[Paddle] SDK initialized')
     }

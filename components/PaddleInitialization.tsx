@@ -52,8 +52,13 @@ export default function PaddleInitialization() {
 
 
 
-          // Initialize Paddle using Setup (v2 method, not Initialize)
-          w.Paddle.Setup({ 
+          // Set environment explicitly for tokens that don't start with ctok_
+          if (!isProd) {
+            w.Paddle.Environment.set('sandbox');
+          }
+
+          // Initialize Paddle
+          w.Paddle.Initialize({ 
             token: token.trim()
           })
 
