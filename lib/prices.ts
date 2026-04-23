@@ -44,9 +44,9 @@ export function getPrice(packageId: 'basic' | 'standard' | 'premium', currency =
 // Map of external price/product IDs (e.g. Stripe price IDs) for specific packages.
 // Add your provider-specific price ids here. The user provided `pri_01kg4gy97s9knjqxs7nw1t7dyy` for Basic.
 export const EXTERNAL_PRICE_IDS: Record<string, string | undefined> = {
-  basic: 'pri_01kg4gy97s9knjqxs7nw1t7dyy',
-  standard: 'pri_01kg4hffc22yaemyz1yj5vkkjs',
-  premium: 'pri_01kg4hge9f1nf3ec8qvyxkwg7j',
+  basic: 'pri_01kpx69v8srys2nn3vvs0hpd7n',
+  standard: 'pri_01kpx6b8k88xwt72q96t4s4gr9',
+  premium: 'pri_01kpx6cjwpym3bv6nfywwcqqsg',
 }
 
 export function getExternalPriceId(packageId: 'basic' | 'standard' | 'premium') {
@@ -55,31 +55,31 @@ export function getExternalPriceId(packageId: 'basic' | 'standard' | 'premium') 
 
 // Paddle LIVE price IDs (vendor 281569)
 export const PADDLE_PRICE_IDS: Record<'basic' | 'standard' | 'premium', string> = {
-  basic: 'pri_01khxfc9tfzf9ga0w1v08tgr7f',
-  standard: 'pri_01khxffh3rqh863kh5t4sg6qdh',
-  premium: 'pri_01khxfh1fjz5h4s5qbsk9sytaa',
+  basic: 'pri_01kpx69v8srys2nn3vvs0hpd7n',
+  standard: 'pri_01kpx6b8k88xwt72q96t4s4gr9',
+  premium: 'pri_01kpx6cjwpym3bv6nfywwcqqsg',
 }
 
 // Paddle SANDBOX price IDs (vendor 46857) — for localhost testing
 export const PADDLE_SANDBOX_PRICE_IDS: Record<'basic' | 'standard' | 'premium', string> = {
-  basic: 'pri_01kjfkhw9q42rpb0cnz1y0qdh8',
-  standard: 'pri_01khy0w50afz9hp3wmanbrs3b8',
-  premium: 'pri_01khy0xjespqh3vq2zgbxby1wk',
+  basic: 'pri_01kpx4cfcq5e5yx745387mv0t9',
+  standard: 'pri_01kpx4ebzv90dg2gzkq3wybhs1',
+  premium: 'pri_01kpxqafppywh4r6vve9n96wan',
 }
 
 
 // Paddle LIVE product IDs (pro_...) — vendor 281569
 export const PADDLE_PRODUCT_IDS: Record<'basic' | 'standard' | 'premium', string> = {
-  basic: 'pro_01khxf9prxrddmv9n4dbycjakk',
-  standard: 'pro_01khxfe3dee51ttsgg6b0fr579',
-  premium: 'pro_01khxfgmmjq7ttbm69xbyj8dh2',
+  basic: 'pro_01kpx6903mtxkkrnkar60z6p9n',
+  standard: 'pro_01kpx6af16gcb4d825h371mfag',
+  premium: 'pro_01kpx6bv878ra9s6eyzn0bktn5',
 }
 
 // Paddle SANDBOX product IDs (pro_...) — vendor 46857 (UPDATED)
 export const PADDLE_SANDBOX_PRODUCT_IDS: Record<'basic' | 'standard' | 'premium', string> = {
-  basic: 'pro_01kjfkga4zxcbpja1phyav5xck',
-  standard: 'pro_01khy0vcm33yqq36kg3q6t2yw6',
-  premium: 'pro_01khy0x2qtbj6b0ha8b3gqwf4b',
+  basic: 'pro_01kpx4bpe4mxv9vrqyg1et3tzt',
+  standard: 'pro_01kpx4ct2gy3bv6snc60s7mbsf',
+  premium: 'pro_01kpx4ewg35hgbe1jtesjj439m',
 }
 
 // Deprecated — kept for backwards compatibility
