@@ -275,6 +275,7 @@ export default function Banner() {
       </div>
       </div>
 
+      {/* GetReportForm Disabled */}
       <GetReportForm
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}

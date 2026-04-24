@@ -166,29 +166,29 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
       />
       
       {/* Modal Container */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background z-[9999] rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-border/50">
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white z-[9999] rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden border border-[#780000]/20 flex flex-col">
         {/* Header with gradient background */}
-        <div className="sticky top-0 bg-gradient-to-r from-[#780000]/5 via-background to-[#780000]/5 border-b border-[#780000]/20 px-8 py-6 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-[#780000] via-[#a52a2a] to-[#780000] border-b border-[#780000]/30 px-8 py-6 flex items-center justify-between flex-shrink-0 relative z-10">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-[#780000] via-[#780000] to-[#5c0000] bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">
               Get Vehicle Report
             </h2>
-            <p className="text-xs text-muted-foreground mt-1">Quick and easy vehicle information</p>
+            <p className="text-xs text-white/80 mt-1">Quick and easy vehicle information</p>
           </div>
           <button
             onClick={onClose}
-            className="p-2.5 hover:bg-muted/80 rounded-xl transition-colors duration-200"
+            className="p-2.5 hover:bg-white/20 rounded-xl transition-colors duration-200"
             aria-label="Close dialog"
           >
-            <X className="w-6 h-6 text-muted-foreground hover:text-foreground transition-colors" />
+            <X className="w-6 h-6 text-white hover:text-white/80 transition-colors" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-8 overflow-y-auto flex-1">
           <form onSubmit={handleSubmit} className="space-y-7">
             {/* Search Type Selection */}
-            <div className="bg-muted/40 p-4 rounded-xl border border-border/50">
+            <div className="bg-gradient-to-br from-[#780000]/5 to-[#a52a2a]/5 p-4 rounded-xl border border-[#780000]/30">
               <Label className="block text-sm font-semibold text-foreground mb-3">
                 Search By
               </Label>
@@ -198,8 +198,8 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                   onClick={() => setVehicleIdType('vin')}
                   className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
                     vehicleIdType === 'vin'
-                      ? 'bg-[#780000] text-white shadow-lg shadow-[#780000]/40 scale-105'
-                      : 'bg-background border border-border text-foreground hover:border-[#780000]/50 hover:bg-[#780000]/5'
+                      ? 'bg-gradient-to-r from-[#780000] to-[#5c0000] text-white shadow-lg shadow-[#780000]/40 scale-105'
+                      : 'bg-white border-2 border-[#780000]/30 text-foreground hover:border-[#780000]/60 hover:bg-[#780000]/5'
                   }`}
                 >
                   <Key className="w-5 h-5" />
@@ -210,8 +210,8 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                   onClick={() => setVehicleIdType('plate')}
                   className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
                     vehicleIdType === 'plate'
-                      ? 'bg-[#780000] text-white shadow-lg shadow-[#780000]/40 scale-105'
-                      : 'bg-background border border-border text-foreground hover:border-[#780000]/50 hover:bg-[#780000]/5'
+                      ? 'bg-gradient-to-r from-[#780000] to-[#5c0000] text-white shadow-lg shadow-[#780000]/40 scale-105'
+                      : 'bg-white border-2 border-[#780000]/30 text-foreground hover:border-[#780000]/60 hover:bg-[#780000]/5'
                   }`}
                 >
                   <Hash className="w-5 h-5" />
@@ -234,7 +234,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                     onChange={(e) => setVinNumber(e.target.value.toUpperCase())}
                     placeholder="Enter VIN number"
                     required
-                    className="h-12 pr-10 border-2 border-border focus:border-[#780000] bg-muted/30 transition-colors"
+                    className="h-12 pr-10 border-2 border-[#780000]/30 focus:border-[#780000] focus:ring-2 focus:ring-[#780000]/20 bg-white transition-colors"
                     maxLength={17}
                   />
                   <button
@@ -261,7 +261,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                   onChange={(e) => setPlateNumber(e.target.value.toUpperCase())}
                   placeholder="Enter Plate Number"
                   required
-                  className="h-12 border-2 border-border focus:border-[#780000] bg-muted/30 transition-colors"
+                  className="h-12 border-2 border-[#780000]/30 focus:border-[#780000] focus:ring-2 focus:ring-[#780000]/20 bg-white transition-colors"
                 />
                 <p className="text-xs text-muted-foreground">
                   Enter your vehicle&apos;s license plate number
@@ -275,7 +275,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                 Vehicle Type
               </Label>
               <Select value={vehicleType} onValueChange={setVehicleType}>
-                <SelectTrigger className="h-12 border-2 border-border focus:border-[#780000] bg-muted/30">
+                <SelectTrigger className="h-12 border-2 border-[#780000]/30 focus:border-[#780000] bg-white">
                   <SelectValue placeholder="Select vehicle type" />
                 </SelectTrigger>
                 <SelectContent className="z-[10000]">
@@ -300,7 +300,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                 onChange={(e) => setCustomerEmail(e.target.value)}
                 placeholder="your.email@example.com"
                 required
-                className="h-12 border-2 border-border focus:border-[#780000] bg-muted/30 transition-colors"
+                className="h-12 border-2 border-[#780000]/30 focus:border-[#780000] focus:ring-2 focus:ring-[#780000]/20 bg-white transition-colors"
               />
               <p className="text-xs text-muted-foreground">
                 We'll send the report to this email address
@@ -318,7 +318,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                   if (found) setSelectedCountry(found)
                 }}
               >
-                <SelectTrigger className="h-12 border-2 border-border focus:border-[#780000] bg-muted/30">
+                <SelectTrigger className="h-12 border-2 border-[#780000]/30 focus:border-[#780000] bg-white">
                   <SelectValue placeholder="Select country" />
                 </SelectTrigger>
                 <SelectContent className="z-[10000] max-h-60 overflow-auto">
@@ -358,8 +358,8 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                     onClick={() => setSelectedPackage(pkg.id)}
                     className={`p-4 rounded-xl border-2 transition-all duration-200 text-center group ${
                       selectedPackage === pkg.id
-                        ? 'bg-gradient-to-br from-[#780000]/15 to-[#780000]/5 border-[#780000] shadow-lg shadow-[#780000]/20'
-                        : 'bg-muted/40 border-border hover:border-[#780000]/50 hover:bg-[#780000]/5 hover:shadow-md'
+                        ? 'bg-gradient-to-br from-[#780000]/15 to-[#a52a2a]/10 border-[#780000] shadow-lg shadow-[#780000]/20'
+                        : 'bg-white border-[#780000]/30 hover:border-[#780000]/60 hover:bg-[#780000]/5 hover:shadow-md'
                     }`}
                   >
                     <div className="font-bold text-sm text-foreground group-hover:text-[#780000] transition-colors">
@@ -378,18 +378,18 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
 
             {/* Error Message */}
             {error && (
-              <div className="p-4 bg-destructive/10 border-2 border-destructive/30 rounded-xl animate-in fade-in">
-                <p className="text-sm font-medium text-destructive">{error}</p>
+              <div className="p-4 bg-red-50 border-2 border-red-300 rounded-xl animate-in fade-in">
+                <p className="text-sm font-medium text-red-700">{error}</p>
               </div>
             )}
 
             {/* Action Buttons */}
-            <div className="flex gap-3 pt-4 border-t border-border/50">
+            <div className="flex gap-3 pt-4 border-t border-[#780000]/20">
               <Button
                 type="button"
                 variant="outline"
                 onClick={onClose}
-                className="flex-1 h-12 rounded-lg font-semibold border-2"
+                className="flex-1 h-12 rounded-lg font-semibold border-2 border-[#780000]/30 text-foreground hover:bg-[#780000]/5 hover:border-[#780000]/60"
                 disabled={isSubmitting}
               >
                 Cancel
