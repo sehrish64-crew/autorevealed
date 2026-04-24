@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { X, Search, Menu } from 'lucide-react'
 import { Input } from '@/components/ui/input'
@@ -10,9 +11,16 @@ import { useTranslations } from '@/lib/translations'
 export default function Header() {
   const { selectedCountry, setSelectedCountry } = useCountry()
   const { t } = useTranslations()
+  const pathname = usePathname()
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+    setIsCountryDropdownOpen(false)
+  }, [pathname])
 
   const filteredCountries = countries.filter(country =>
     country.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -101,21 +109,34 @@ export default function Header() {
         <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#780000] to-transparent"></div>
       </header>
 
+      {/* MOBILE MENU OVERLAY */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 z-[99] bg-black/50"
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-label="Close menu"
+        />
+      )}
+
       {/* MOBILE MENU */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[100] bg-white p-6">
+        <div className="fixed top-0 left-0 right-0 z-[100] bg-white p-6 h-screen overflow-y-auto">
           <div className="flex justify-between items-center mb-8">
             <img src="/logo.png" className="h-8" />
-            <button onClick={() => setIsMobileMenuOpen(false)}>
-              <X />
+            <button 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="p-1 hover:bg-gray-100 rounded"
+              aria-label="Close menu"
+            >
+              <X className="w-6 h-6" />
             </button>
           </div>
 
           <div className="space-y-4 text-lg font-semibold">
-            <Link href="/" className="block hover:text-[#780000]">Home</Link>
-            <Link href="/pricing" className="block hover:text-[#780000]">Pricing</Link>
-            <Link href="/contact-us" className="block hover:text-[#780000]">Contact</Link>
-            <Link href="/about-us" className="block hover:text-[#780000]">About</Link>
+            <Link href="/" className="block hover:text-[#780000] transition-colors">Home</Link>
+            <Link href="/pricing" className="block hover:text-[#780000] transition-colors">Pricing</Link>
+            <Link href="/contact-us" className="block hover:text-[#780000] transition-colors">Contact</Link>
+            <Link href="/about-us" className="block hover:text-[#780000] transition-colors">About</Link>
           </div>
         </div>
       )}
