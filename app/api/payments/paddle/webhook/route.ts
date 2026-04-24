@@ -1,31 +1,41 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { updateOrderPaymentStatus, getOrderById } from '@/lib/database'
+import paddle from '@/lib/paddleClient'
 
 // Paddle v2 webhook handler - verify signature and update order
 export async function POST(req: NextRequest) {
   try {
     const body = await req.text()
+    const signature = req.headers.get('paddle-signature') || ''
+    const webhookSecret = process.env.NEXT_PUBLIC_PADDLE_ENV === 'production' 
+      ? process.env.LIVE_WEBHOOK_SECRET 
+      : process.env.PADDLE_WEBHOOK_SECRET
 
-    // Paddle v2 webhooks send JSON data
-    let data: any
-    try {
-      data = JSON.parse(body)
-    } catch (e) {
-      // Fallback to form-encoded if JSON parsing fails (for backward compatibility)
-      data = Object.fromEntries(new URLSearchParams(body))
+    if (!signature || !webhookSecret) {
+      console.error('[Paddle Webhook] Missing signature or webhook secret')
+      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 })
     }
 
-    console.log('[Paddle Webhook] FULL DATA RECV:', JSON.stringify(data, null, 2))
+    // Verify signature
+    try {
+      const isValid = await paddle.webhooks.verify(body, webhookSecret, signature)
+      if (!isValid) {
+        console.error('[Paddle Webhook] Invalid signature')
+        return NextResponse.json({ success: false, error: 'Invalid signature' }, { status: 401 })
+      }
+    } catch (err) {
+      console.error('[Paddle Webhook] Signature verification failed:', err)
+      return NextResponse.json({ success: false, error: 'Verification failed' }, { status: 401 })
+    }
 
-    console.log('[Paddle Webhook] Received event:', {
-      event_type: data.event_type,
-      eventType: data.eventType,
-      alert_name: data.alert_name,
-      transactionId: data.data?.id || data.transaction_id,
+    // Parse data
+    const data = JSON.parse(body)
+    console.log('[Paddle Webhook] Received validated event:', {
+      eventType: data.event_type || data.eventType,
+      transactionId: data.data?.id
     })
 
-    // Paddle v2 event format
-    const eventType = data.event_type || data.eventType || data.alert_name
+    const eventType = data.event_type || data.eventType
     const transactionData = data.data
 
     // Handle transaction.completed event (payment successful)
@@ -78,7 +88,7 @@ export async function POST(req: NextRequest) {
         if (order) {
           // Send payment success emails
           const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
-          const emailResponse = await fetch(${baseUrl}/api/send-email, {
+          const emailResponse = await fetch(`${baseUrl}/api/send-email`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

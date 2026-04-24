@@ -70,7 +70,7 @@
     "next": "^16.1.1",
     "next-themes": "^0.3.0",
     "node-fetch": "^3.3.2",
-    "nodemailer": "^8.0.5",
+    "nodemailer": "^8.0.6",
     "postcss": "^8.5.6",
     "react": "18.2.0",
     "react-day-picker": "^8.10.1",
@@ -86,8 +86,7 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2",
     "vaul": "^0.9.9",
-    "zod": "^3.23.8",
-    "@paddle/paddle-sdk": "^1.0.0"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

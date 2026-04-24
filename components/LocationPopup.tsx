@@ -67,11 +67,12 @@ export default function LocationPopup() {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-300">
       <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col animate-in scale-in duration-300">
         {/* Animated Header Background */}
         <div className="relative overflow-hidden">
-<div className="absolute inset-0 bg-gradient-to-r from-[#780000] via-[#a00000] to-[#780000] opacity-90"></div>          <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-90"></div>
+          <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary rounded-full blur-3xl"></div>
           </div>
@@ -101,34 +102,34 @@ export default function LocationPopup() {
         </div>
 
         {/* Search Box with Enhanced Styling */}
-        <div className="p-6 border-b border-[#780000]/20 bg-gradient-to-b from-[#780000]/10 to-background">
+        <div className="p-6 border-b border-border bg-gradient-to-b from-muted to-background">
           <div className="relative group">
-            <Search className="absolute left-4 top-3.5 w-5 h-5 text-[#780000]/60 group-focus-within:text-[#780000] transition duration-200" />
+            <Search className="absolute left-4 top-3.5 w-5 h-5 text-primary/60 group-focus-within:text-primary transition duration-200" />
             <input
               type="text"
               placeholder="Search countries, codes, or currencies..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-6 py-3 border-2 border-[#780000]/30 rounded-xl focus:outline-none focus:border-[#780000] focus:ring-4 focus:ring-[#780000]/20 transition-all duration-200 text-foreground placeholder-muted-foreground bg-background"
+              className="w-full pl-12 pr-6 py-3 border-2 border-border rounded-xl focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all duration-200 text-foreground placeholder-muted-foreground bg-background"
               autoFocus
             />
           </div>
         </div>
 
         {/* Countries Grid with Enhanced Empty State */}
-        <div className="overflow-y-auto flex-1 bg-gradient-to-b from-[#780000]/5 to-background">
+        <div className="overflow-y-auto flex-1 bg-background">
           {filteredCountries.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-6">
               {filteredCountries.map((country) => (
                 <button
-  key={country.code}
-  onClick={() => handleSelectCountry(country)}
-  className={`group p-4 rounded-xl transition-all duration-200 text-left border-2 ${
-    selectedCountry.code === country.code
-      ? 'bg-gradient-to-br from-[#780000] via-[#8f0000] to-[#a00000] text-white border-[#780000]/50 shadow-lg scale-105'
-      : 'bg-gradient-to-br from-[#780000]/10 to-[#780000]/5 text-foreground border-[#780000]/20 hover:border-[#780000]/50 hover:shadow-md hover:scale-102'
-  }`}
->
+                  key={country.code}
+                  onClick={() => handleSelectCountry(country)}
+                  className={`group p-4 rounded-xl transition-all duration-200 text-left border-2 ${
+                    selectedCountry.code === country.code
+                      ? 'bg-gradient-to-br from-primary to-secondary text-primary-foreground border-primary/50 shadow-lg scale-105'
+                      : 'bg-gradient-to-br from-muted to-muted/50 text-foreground border-transparent hover:border-primary/30 hover:shadow-md hover:scale-102'
+                  }`}
+                >
                   <div className="flex items-start justify-between mb-2">
                     <div className="font-bold text-lg">{country.name}</div>
                     {selectedCountry.code === country.code && (
@@ -159,14 +160,14 @@ export default function LocationPopup() {
         </div>
 
         {/* Enhanced Footer */}
-        <div className="border-t border-[#780000]/20 p-6 bg-gradient-to-r from-[#780000]/10 to-background flex justify-between items-center">
+        <div className="border-t border-border p-6 bg-gradient-to-r from-muted to-background flex justify-between items-center">
           <div>
             <p className="text-xs text-muted-foreground uppercase tracking-wide font-semibold mb-1">Currently Selected</p>
             <p className="text-lg font-bold text-foreground">{selectedCountry.name} ({selectedCountry.code})</p>
           </div>
           <button
             onClick={() => setIsOpen(false)}
-            className="px-8 py-3 bg-gradient-to-r from-[#780000] to-[#a00000] text-white rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 font-semibold flex items-center gap-2 group"
+            className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-primary-foreground rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-200 font-semibold flex items-center gap-2 group"
           >
             <span>Continue</span>
             <Zap className="w-4 h-4 group-hover:rotate-12 transition duration-200" />
