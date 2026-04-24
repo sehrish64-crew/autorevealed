@@ -56,11 +56,20 @@ export async function POST(request: NextRequest) {
     })
 
     console.log('✅ Order created successfully:', { 
-      orderId: order.id, 
-      orderNumber: order.order_number,
-      packageType: order.package_type,
-      amount: order.amount
+      orderId: order?.id, 
+      orderNumber: order?.order_number,
+      packageType: order?.package_type,
+      amount: order?.amount,
+      fullOrder: JSON.stringify(order)
     })
+
+    if (!order?.id) {
+      console.error('❌ Order created but no ID returned:', order)
+      return NextResponse.json(
+        { error: 'Order created but no ID returned: ' + JSON.stringify(order) },
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json({
       success: true,

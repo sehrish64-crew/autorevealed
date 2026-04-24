@@ -86,17 +86,21 @@ export default function BuyButton({
       script.async = true;
       script.onload = () => {
         console.log('✅ [BuyButton] Paddle script loaded successfully');
-        // Initialize Paddle billing token if available and not already initialized
+        // Initialize Paddle with the appropriate token
         try {
-          const token = process.env.NEXT_PUBLIC_PADDLE_BILLING_TOKEN || process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN || '';
+          const billingToken = process.env.NEXT_PUBLIC_PADDLE_BILLING_TOKEN || '';
+          const liveToken = process.env.NEXT_PUBLIC_LIVE_PADDLE_CLIENT_TOKEN || '';
+          const sandboxToken = process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN || '';
+          
+          // Prefer billing token, then live token, then sandbox token
+          const token = billingToken || liveToken || sandboxToken;
+          
           const w = window as any;
-          if (w.Paddle && typeof w.Paddle.Initialize === 'function' && !w.__PADDLE_BILLING_INITIALIZED) {
-            if (token && token.startsWith('pt_')) {
+          if (w.Paddle && typeof w.Paddle.Initialize === 'function' && !w.__PADDLE_INITIALIZED) {
+            if (token) {
               w.Paddle.Initialize({ token });
-              w.__PADDLE_BILLING_INITIALIZED = true;
-              console.log('✅ [BuyButton] Paddle initialized with billing token');
-            } else if (token && token.startsWith('ctok_')) {
-              console.warn('⚠️ [BuyButton] Legacy ctok_ token detected. Please replace with pt_sandbox_ token for Billing v2.');
+              w.__PADDLE_INITIALIZED = true;
+              console.log(`✅ [BuyButton] Paddle initialized with token: ${token.substring(0, 10)}...`);
             }
           }
         } catch (e) {
@@ -203,11 +207,19 @@ export default function BuyButton({
         }
       }
 
-      // Determine environment from token
-      const token = process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN || '';
+      // Determine environment from token - check both sandbox and live tokens
+      const sandboxToken = process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN || '';
+      const liveToken = process.env.NEXT_PUBLIC_LIVE_PADDLE_CLIENT_TOKEN || '';
+      const token = liveToken || sandboxToken;
       const env = token.startsWith('live_') ? 'production' : 'sandbox';
+      
+      if (!token) {
+        throw new Error('Paddle token not configured. Please check your environment variables.');
+      }
+      
       if (process.env.NODE_ENV === 'development') {
         console.log(`📍 [BuyButton] Environment: ${env}`);
+        console.log(`📍 [BuyButton] Using token: ${token.substring(0, 10)}...`);
       }
 
       // Open checkout overlay

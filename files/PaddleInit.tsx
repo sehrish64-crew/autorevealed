@@ -7,7 +7,7 @@ export default function PaddleInit() {
     // Poll until the Paddle script is available, then initialize once.
     const interval = setInterval(() => {
       const w = window as any
-      if (w && w.Paddle && typeof w.Paddle.Initialize === 'function') {
+      if (w && w.Paddle && typeof w.Paddle.Setup === 'function') {
         const token = process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN
         
         if (!token) {
@@ -17,41 +17,22 @@ export default function PaddleInit() {
         }
         
         try {
-          // Initialize Paddle with client-side token (required for Paddle.js v2)
-          // This replaces the deprecated Paddle.Setup() method
-          w.Paddle.Initialize({
-            token,
-            // eventCallback will receive Paddle checkout lifecycle events
-            eventCallback: (ev: any) => {
-              try {
-                console.log('[Paddle.eventCallback]', ev?.event || ev?.name || ev)
-              } catch (ee) {
-                console.log('[Paddle.eventCallback] (error logging event)', ee)
-              }
-            }
+          // Initialize Paddle with client-side token using Setup method (v2 API)
+          w.Paddle.Setup({
+            token: token.trim()
           })
           console.log('✅ [Paddle] Initialized successfully with client token')
           console.log(`✅ [Paddle] Token: ${token.substring(0, 20)}...`)
-          
-          // Verify Paddle Checkout is available
+          // Mark as initialized
+          w.PADDLE_INITIALIZED = true
+          console.log('✅ [Paddle] Setup complete')
+
+          // Verify Checkout is ready
           if (w.Paddle.Checkout && typeof w.Paddle.Checkout.open === 'function') {
             console.log('✅ [Paddle] Checkout.open is ready')
           }
-          
-          // Log Retain status (only available for live accounts)
-          if (token.startsWith('live_')) {
-            console.log('✅ [Paddle] Retain loaded for live account')
-          }
-          
-          // Set up event listener for checkout errors
-          if (w.Paddle.Events && typeof w.Paddle.Events.on === 'function') {
-            w.Paddle.Events.on('*', function(event: any) {
-              console.log('[Paddle Event]', event.name, event);
-            });
-            console.log('✅ [Paddle] Event listener registered');
-          }
         } catch (e) {
-          console.error('❌ [Paddle] Initialize error:', e)
+          console.error('❌ [Paddle] Setup error:', e)
         }
         clearInterval(interval)
       }

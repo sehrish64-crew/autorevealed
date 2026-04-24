@@ -3,12 +3,26 @@
 import Script from 'next/script'
 
 export default function PaddleInitialization() {
-  const env = process.env.NEXT_PUBLIC_PADDLE_ENV || 'sandbox'
-  const isLive = env === 'production' || env === 'live'
+  // Determine environment: Check NEXT_PUBLIC_PADDLE_ENV first, default to 'sandbox'
+  const paddleEnv = process.env.NEXT_PUBLIC_PADDLE_ENV || 'sandbox'
+  const isProduction = paddleEnv === 'production' || paddleEnv === 'live'
   
-  const token = isLive 
-    ? process.env.NEXT_PUBLIC_LIVE_PADDLE_CLIENT_TOKEN 
+  // Get the appropriate token based on environment
+  // For production: use NEXT_PUBLIC_LIVE_PADDLE_CLIENT_TOKEN or NEXT_PUBLIC_LIVE_PADDLE_BILLING_TOKEN
+  // For sandbox: use NEXT_PUBLIC_PADDLE_CLIENT_TOKEN or NEXT_PUBLIC_PADDLE_BILLING_TOKEN
+  const token = isProduction 
+    ? (process.env.NEXT_PUBLIC_LIVE_PADDLE_CLIENT_TOKEN || process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN)
     : (process.env.NEXT_PUBLIC_PADDLE_BILLING_TOKEN || process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN)
+
+  console.log('[Paddle Init] Environment:', paddleEnv)
+  console.log('[Paddle Init] Is Production:', isProduction)
+  console.log('[Paddle Init] Token available:', !!token)
+  console.log('[Paddle Init] Token prefix:', token?.substring(0, 5) + '...')
+
+  if (!token) {
+    console.error('❌ [Paddle] Missing NEXT_PUBLIC_PADDLE_CLIENT_TOKEN environment variable')
+    return null
+  }
 
   return (
     <Script
@@ -16,22 +30,47 @@ export default function PaddleInitialization() {
       strategy="afterInteractive"
       onLoad={() => {
         const w = window as any
-        if (w.PADDLE_INITIALIZED) return;
-        if (w.Paddle && token) {
-          console.log('[Paddle] Global Initialization with token:', token.substring(0, 10) + '...')
-          
-          if (w.Paddle.Environment) {
-            const env = process.env.NEXT_PUBLIC_PADDLE_ENV || 'sandbox'
-            w.Paddle.Environment.set(env === 'production' || env === 'live' ? 'production' : 'sandbox');
+        
+        // Prevent double initialization
+        if (w.PADDLE_INITIALIZED) {
+          console.log('[Paddle] Already initialized, skipping.')
+          return
+        }
+
+        try {
+          if (!w.Paddle) {
+            console.error('❌ [Paddle] Paddle object not available on window')
+            return
           }
 
-          w.Paddle.Initialize({ 
+          const env = process.env.NEXT_PUBLIC_PADDLE_ENV || 'sandbox'
+          const isProd = env === 'production' || env === 'live'
+          
+          console.log('[Paddle] Initializing with:')
+          console.log('  - Token:', token.substring(0, 15) + '...')
+          console.log('  - Environment:', isProd ? 'production' : 'sandbox')
+
+
+
+          // Initialize Paddle using Setup (v2 method, not Initialize)
+          w.Paddle.Setup({ 
             token: token.trim()
           })
 
-          w.PADDLE_INITIALIZED = true;
-          console.log('[Paddle] Initialization complete');
+          // Mark as initialized to prevent duplicate attempts
+          w.PADDLE_INITIALIZED = true
+          console.log('✅ [Paddle] Initialization complete')
+
+          // Verify Checkout is ready
+          if (w.Paddle.Checkout && typeof w.Paddle.Checkout.open === 'function') {
+            console.log('✅ [Paddle] Checkout.open is ready')
+          }
+        } catch (err) {
+          console.error('❌ [Paddle] Initialization error:', err)
         }
+      }}
+      onError={(e) => {
+        console.error('❌ [Paddle] Script loading error:', e)
       }}
     />
   )

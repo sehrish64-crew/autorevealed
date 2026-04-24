@@ -93,7 +93,10 @@ export default function Testimonials() {
             {t('testimonials_subtitle')}
           </p>
 
-          <Button className="bg-[#780000] hover:bg-red-900 text-white px-8 py-6 text-lg">
+          <Button 
+            onClick={() => setIsReviewFormOpen(true)}
+            className="bg-[#780000] hover:bg-red-900 text-white px-8 py-6 text-lg"
+          >
             {t('testimonials_add_review')}
           </Button>
         </div>

@@ -67,8 +67,14 @@ export async function POST(request: Request) {
 
     // Notify admin about new review (non-blocking)
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+      // In development, use localhost; in production, use the configured base URL
+      const baseUrl = process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:3000'
+        : (process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000');
       console.log('📧 Sending review notification email using baseUrl:', baseUrl);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+      
       const resp = await fetch(`${baseUrl}/api/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -81,7 +87,10 @@ export async function POST(request: Request) {
           comment: review.comment,
           createdAt: review.created_at,
         }),
-      })
+        signal: controller.signal,
+      });
+      
+      clearTimeout(timeoutId);
 
       try {
         const json = await resp.json()

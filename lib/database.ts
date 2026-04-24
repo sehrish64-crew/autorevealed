@@ -366,10 +366,22 @@ export async function insertOrder(order: {
     }
 
     const insertId = result.insertId;
+    console.log('✅ INSERT successful, insertId:', insertId)
+    
     // Generate order number based on date and id
     const orderNumber = `ORD-${new Date().toISOString().slice(0,10).replace(/-/g,'')}-${String(insertId).padStart(5,'0')}`;
+    console.log('📝 Generated orderNumber:', orderNumber)
+    
     await conn.execute('UPDATE orders SET order_number = ? WHERE id = ?', [orderNumber, insertId]);
+    console.log('✅ Updated order_number')
+    
     const [rows]: any = await conn.execute('SELECT * FROM orders WHERE id = ?', [insertId]);
+    console.log('✅ Retrieved order rows:', rows?.length, 'first row:', rows?.[0] ? 'exists' : 'null')
+    
+    if (!rows?.[0]) {
+      throw new Error(`Failed to retrieve order after insert. ID: ${insertId}`)
+    }
+    
     return normalizeOrder(rows[0]);
   } finally {
     conn.release();
