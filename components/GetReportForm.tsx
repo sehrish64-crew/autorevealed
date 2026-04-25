@@ -21,7 +21,7 @@ interface GetReportFormProps {
   prefilledIdentValue?: string
 }
 
-const vehicleTypes = ['Car', 'Motorcycle', 'Truck', 'Boat', 'ATV', 'RVS', 'Caravan']
+const vehicleTypes = ['Car', 'Motorcycle', 'Truck', 'Boat', 'ATV', 'RVS', 'Caravan', 'Motorhome', 'Campervan']
 const packages = [
   { id: 'basic', name: 'Basic Report' },
   { id: 'standard', name: 'Standard Report' },
