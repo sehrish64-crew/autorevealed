@@ -8,7 +8,7 @@ import { Card } from '@/components/ui/card'
 import { Lock, Eye, EyeOff } from 'lucide-react'
 
 export default function AdminLogin() {
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
@@ -26,7 +26,7 @@ export default function AdminLogin() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username: email, password }),
       })
 
       const data = await response.json()
@@ -57,15 +57,15 @@ export default function AdminLogin() {
 
         <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
           <div>
-            <label htmlFor="username" className="block text-xs md:text-sm font-semibold text-gray-900 mb-1 md:mb-2">
-              Username
+            <label htmlFor="email" className="block text-xs md:text-sm font-semibold text-gray-900 mb-1 md:mb-2">
+              Admin Email
             </label>
             <Input
-              id="username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter username"
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter admin email"
               required
               className="h-10 md:h-12 text-xs md:text-sm"
             />
