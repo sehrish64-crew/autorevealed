@@ -51,4 +51,15 @@ if (process.env.ENABLE_DB_CHECK === 'true') {
   }
 }
 
+// Export a query helper function
+export async function query(sql: string, values?: any[]) {
+  const connection = await pool.getConnection()
+  try {
+    const [results] = await connection.execute(sql, values)
+    return results
+  } finally {
+    connection.release()
+  }
+}
+
 export default pool
