@@ -93,24 +93,73 @@ export default function CheckoutContent() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+        <div className="max-w-4xl mx-auto px-3 sm:px-6 py-3 sm:py-6">
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-2 text-red-700 hover:text-red-800 font-medium mb-4"
+            className="flex items-center gap-2 text-red-700 hover:text-red-800 font-medium mb-2 sm:mb-4"
           >
-            <ArrowLeft size={20} />
-            Back to Form
+            <ArrowLeft size={16} className="sm:size-5" />
+            <span className="text-xs sm:text-base">Back to Form</span>
           </button>
-          <h1 className="text-3xl font-bold text-gray-900">Secure Checkout</h1>
-          <p className="text-gray-600 mt-2">Complete your payment to get your vehicle report</p>
+          <h1 className="text-xl sm:text-3xl font-bold text-gray-900">Secure Checkout</h1>
+          <p className="text-xs sm:text-base text-gray-600 mt-1 sm:mt-2">Complete your payment to get your vehicle report</p>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 gap-8">
+      <div className="max-w-4xl mx-auto px-3 sm:px-6 py-6 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
+          {/* Order Summary - Show First on Mobile */}
+          <div className="bg-white p-3 sm:p-6 rounded-lg shadow border border-gray-200 lg:order-2 order-first">
+            <h2 className="text-base sm:text-xl font-bold text-gray-900 mb-3 sm:mb-6">Order Summary</h2>
+
+            <div className="space-y-2 sm:space-y-3 pb-3 sm:pb-6 border-b border-gray-200">
+              <div className="flex justify-between items-start gap-2">
+                <div className="min-w-0 flex-1">
+                  <p className="font-medium text-xs sm:text-base text-gray-900">
+                    {formData.packageId === 'basic' ? 'Basic' : formData.packageId === 'standard' ? 'Standard' : 'Premium'} Report
+                  </p>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Vehicle: {formData.vehicleIdentifier}
+                  </p>
+                  <p className="text-xs text-gray-600">
+                    Type: {formData.vehicleType}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-2 py-3 sm:py-6 border-b border-gray-200">
+              <div className="flex justify-between text-xs sm:text-sm text-gray-700">
+                <span>Report Price</span>
+                <span className="font-medium">
+                  {formatCurrency(formData.amount, formData.currency)}
+                </span>
+              </div>
+              <div className="flex justify-between text-xs sm:text-sm text-gray-700">
+                <span>Processing Fee</span>
+                <span className="font-medium text-green-600">Free</span>
+              </div>
+            </div>
+
+            <div className="py-2 sm:py-4">
+              <div className="flex justify-between items-center gap-2">
+                <span className="text-sm sm:text-lg font-bold text-gray-900">Total Amount</span>
+                <span className="text-lg sm:text-2xl font-bold text-red-700">
+                  {formatCurrency(formData.amount, formData.currency)}
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-3 sm:mt-6 p-2 sm:p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <p className="text-xs text-blue-800">
+                <strong>✓ Secure Payment:</strong> Your payment is protected with industry-standard encryption.
+              </p>
+            </div>
+          </div>
+
           {/* Payment Method Selector */}
-          <div>
+          <div className="lg:order-1">
             <PaymentMethodSelector
               amount={formData.amount}
               currency={formData.currency}
@@ -123,14 +172,18 @@ export default function CheckoutContent() {
             />
           </div>
 
-          {/* Order Summary */}
-          <div className="bg-white p-6 rounded-lg shadow border border-gray-200 h-fit">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">Order Summary</h2>
+          {/* Terms and Conditions */}
+          <div className="col-span-1 lg:col-span-2 p-2 sm:p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            {/* <p className="text-xs text-gray-600">
+              By completing this purchase, you agree to our Terms of Service and Privacy Policy.
+            </p> */}
+          </div>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Order Summary</h2>
 
-            <div className="space-y-4 pb-6 border-b border-gray-200">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="font-medium text-gray-900">
+            <div className="space-y-3 pb-4 sm:pb-6 border-b border-gray-200">
+              <div className="flex justify-between items-start gap-2">
+                <div className="min-w-0">
+                  <p className="font-medium text-sm sm:text-base text-gray-900 truncate">
                     {formData.packageId === 'basic' ? 'Basic' : formData.packageId === 'standard' ? 'Standard' : 'Premium'} Report
                   </p>
                   <p className="text-sm text-gray-600 mt-1">
@@ -143,42 +196,41 @@ export default function CheckoutContent() {
               </div>
             </div>
 
-            <div className="space-y-3 py-6 border-b border-gray-200">
-              <div className="flex justify-between text-gray-700">
+            <div className="space-y-2 sm:space-y-3 py-4 sm:py-6 border-b border-gray-200">
+              <div className="flex justify-between text-xs sm:text-sm text-gray-700">
                 <span>Report Price</span>
                 <span className="font-medium">
                   {formatCurrency(formData.amount, formData.currency)}
                 </span>
               </div>
-              <div className="flex justify-between text-gray-700">
+              <div className="flex justify-between text-xs sm:text-sm text-gray-700">
                 <span>Processing Fee</span>
                 <span className="font-medium text-green-600">Free</span>
               </div>
             </div>
 
-            <div className="py-4">
-              <div className="flex justify-between items-center">
-                <span className="text-lg font-bold text-gray-900">Total Amount</span>
-                <span className="text-2xl font-bold text-red-700">
+            <div className="py-3 sm:py-4">
+              <div className="flex justify-between items-center gap-2">
+                <span className="text-base sm:text-lg font-bold text-gray-900">Total Amount</span>
+                <span className="text-xl sm:text-2xl font-bold text-red-700 text-right">
                   {formatCurrency(formData.amount, formData.currency)}
                 </span>
               </div>
             </div>
 
-            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-sm text-blue-800">
+            <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <p className="text-xs sm:text-sm text-blue-800">
                 <strong>✓ Secure Payment:</strong> Your payment is protected with industry-standard encryption.
               </p>
             </div>
 
-            <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg">
-              <p className="text-xs text-gray-600">
+            <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-gray-50 border border-gray-200 rounded-lg">
+              {/* <p className="text-xs text-gray-600">
                 By completing this purchase, you agree to our Terms of Service and Privacy Policy.
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
       </div>
-    </div>
   )
 }

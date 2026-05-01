@@ -144,66 +144,69 @@ export function PaymentMethodSelector({
         clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '',
         currency,
         intent: 'capture',
+        disableFunding: 'paylater',
       }}
     >
-      <div className="w-full max-w-md mx-auto p-6 bg-white rounded-lg border border-gray-200">
-        <h2 className="text-xl font-bold text-gray-900 mb-6">Select Payment Method</h2>
+      <div className="w-full max-w-md mx-auto p-4 sm:p-6 bg-white rounded-lg border border-gray-200 relative z-10">
+        <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Select Payment Method</h2>
 
         {error && (
-          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-            <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5" size={20} />
-            <p className="text-red-700 text-sm">{error}</p>
+          <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2 sm:gap-3">
+            <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5 w-5 h-5 sm:w-5 sm:h-5" />
+            <p className="text-red-700 text-xs sm:text-sm">{error}</p>
           </div>
         )}
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {/* PayPal Option */}
           <div
-            className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+            className={`p-3 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${
               selectedMethod === 'paypal'
                 ? 'border-blue-600 bg-blue-50'
                 : 'border-gray-200 hover:border-gray-300'
             }`}
             onClick={() => setSelectedMethod('paypal')}
           >
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center">
-                {selectedMethod === 'paypal' && <div className="w-3 h-3 bg-blue-600 rounded-full" />}
+            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-gray-300 flex items-center justify-center flex-shrink-0">
+                {selectedMethod === 'paypal' && <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-blue-600 rounded-full" />}
               </div>
-              <span className="font-semibold text-gray-900">PayPal</span>
+              <span className="font-semibold text-sm sm:text-base text-gray-900">PayPal</span>
             </div>
-            <p className="text-sm text-gray-600 ml-9">Fast and secure checkout</p>
+            <p className="text-xs sm:text-sm text-gray-600 ml-7 sm:ml-9">Fast and secure checkout</p>
 
             {selectedMethod === 'paypal' && (
-              <div className="mt-4 ml-9 space-y-3">
-                <div className="p-3 bg-blue-50 rounded border border-blue-200">
-                  <p className="text-sm font-semibold text-blue-900">
-                    Amount to charge: <span className="text-lg text-blue-700">{formatCurrency(amount, currency)}</span>
+              <div className="mt-3 sm:mt-4 ml-7 sm:ml-9 space-y-2 sm:space-y-3">
+                <div className="p-2 sm:p-3 bg-blue-50 rounded border border-blue-200">
+                  <p className="text-xs sm:text-sm font-semibold text-blue-900">
+                    Amount to charge: <span className="text-base sm:text-lg text-blue-700">{formatCurrency(amount, currency)}</span>
                   </p>
                 </div>
                 
                 {isProcessing ? (
-                  <div className="flex items-center justify-center py-4">
-                    <Loader className="animate-spin text-blue-600" size={24} />
-                    <span className="ml-2 text-gray-600">Processing payment...</span>
+                  <div className="flex items-center justify-center py-3 sm:py-4">
+                    <Loader className="animate-spin text-blue-600 w-5 h-5 sm:w-6 sm:h-6" />
+                    <span className="ml-2 text-xs sm:text-sm text-gray-600">Processing payment...</span>
                   </div>
                 ) : (
-                  <PayPalButtons
-                    style={{ 
-                      layout: 'vertical',
-                      color: 'blue',
-                    
-                      label: 'pay',
-                    }}
-                    createOrder={async () => {
-                      return await createPayPalOrder()
-                    }}
-                    onApprove={handlePayPalApprove}
-                    onError={handlePayPalError}
-                    onClick={() => {
-                      setError('')
-                    }}
-                  />
+                  <div className="relative z-0">
+                    <PayPalButtons
+                      style={{ 
+                        layout: 'vertical',
+                        color: 'blue',
+                      
+                        label: 'pay',
+                      }}
+                      createOrder={async () => {
+                        return await createPayPalOrder()
+                      }}
+                      onApprove={handlePayPalApprove}
+                      onError={handlePayPalError}
+                      onClick={() => {
+                        setError('')
+                      }}
+                    />
+                  </div>
                 )}
               </div>
             )}
@@ -247,7 +250,7 @@ export function PaymentMethodSelector({
           </div> */}
         </div>
 
-        <p className="text-xs text-gray-500 text-center mt-6">
+        <p className="text-xs text-gray-500 text-center mt-4 sm:mt-6">
           Your payment information is secure and encrypted
         </p>
       </div>

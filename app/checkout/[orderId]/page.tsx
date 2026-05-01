@@ -54,15 +54,15 @@ export default async function CheckoutPage({ params }: { params: Promise<{ order
   })
 
   return (
-    <div className="py-8">
-      <div className="p-6 max-w-3xl mx-auto">
-        <h1 className="text-2xl font-bold mb-6 text-center">Checkout — Order #{order.order_number}</h1>
+    <div className="py-6 sm:py-8">
+      <div className="px-4 sm:px-6 max-w-3xl mx-auto">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Checkout — Order #{order.order_number}</h1>
 
         <div className="max-w-xl mx-auto">
           <CheckoutSummary order={order} />
 
           {/* Compute Paddle priceId on the server and pass to client pay button */}
-          <div className="mt-4">
+          <div className="mt-4 sm:mt-6">
           <OrderPay currency={order.currency} amount={order.amount} />
           </div>
         </div>
