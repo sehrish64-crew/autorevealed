@@ -15,16 +15,16 @@ export default function RefundPolicyPageClient() {
       <div className="container mx-auto px-6 py-20">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <h1 className="text-4xl font-bold text-gray-900">Refund Policy</h1>
-          <p className="text-gray-600 text-lg">Effective Date: 31 March 2026</p>
+          {/* <p className="text-gray-600 text-lg">Effective Date: 31 March 2026</p> */}
         </div>
 
         <div className="mt-10 space-y-8 max-w-3xl mx-auto text-gray-700">
 
           <section>
             <h2 className="text-2xl font-semibold text-gray-900">Introduction to the Services</h2>
-            <p className="mt-3">These Terms and Conditions ("Agreement") form a legally binding contract between you ("Buyer", "you", or "your"), <strong>Paddle</strong> (as defined below), and <strong>Allied Timber</strong> ("Supplier", "we", "our", or "us") and govern your use of the services provided via <strong>AutoRevealed.com</strong>.</p>
-            <p className="mt-3"><strong>Paddle is the Merchant of Record and authorised reseller</strong> of the Products offered by Allied Timber. This means that payments are processed by Paddle, but the Product is <strong>licensed and provided by Allied Timber</strong>.</p>
-            <p className="mt-3">By placing an order through Paddle, you agree to both:</p>
+            <p className="mt-3">These Terms and Conditions ("Agreement") form a legally binding contract between you ("Buyer", "you", or "your"), <strong>Merchant</strong> (as defined below), and <strong>Allied Timber</strong> ("Supplier", "we", "our", or "us") and govern your use of the services provided via <strong>AutoRevealed.com</strong>.</p>
+            <p className="mt-3"><strong>Merchant is the Merchant of Record and authorised reseller</strong> of the Products offered by Allied Timber. This means that payments are processed by Merchant, but the Product is <strong>licensed and provided by Allied Timber</strong>.</p>
+            <p className="mt-3">By placing an order through Merchant, you agree to both:</p>
             <ul className="mt-3 space-y-2 list-disc list-inside">
               <li>These Terms & Conditions, and</li>
               <li>The Supplier Agreement provided by Allied Timber</li>
@@ -46,16 +46,16 @@ export default function RefundPolicyPageClient() {
             <ul className="mt-3 space-y-3">
               <li><strong>Consumer:</strong> A Buyer purchasing for personal, non-commercial use</li>
               <li><strong>Digital Content:</strong> Data supplied in digital form, including vehicle history reports</li>
-              <li><strong>Paddle:</strong>
+              <li><strong>Merchant:</strong>
                 <ul className="mt-2 ml-4 space-y-1 list-disc list-inside">
                   <li><strong>UK :</strong> Mora St, London EC1V, United Kingdom
                   </li>
-                  {/* <li><strong>Rest of World:</strong> Paddle.com Market Limited, Judd House, 18-29 Mora Street, London EC1V 8BT, UK</li> */}
+                  {/* <li><strong>Rest of World:</strong> Merchant.com Market Limited, Judd House, 18-29 Mora Street, London EC1V 8BT, UK</li> */}
                 </ul>
               </li>
               <li><strong>Product:</strong> Digital vehicle history reports and related services provided by Allied Timber</li>
               <li><strong>Supplier:</strong> Allied Timber</li>
-              <li><strong>Services:</strong> Online services enabling the purchase and delivery of Products via Paddle</li>
+              <li><strong>Services:</strong> Online services enabling the purchase and delivery of Products via Merchant</li>
               <li><strong>Transaction:</strong> Purchase of a Product through the Services</li>
             </ul>
           </section>
@@ -66,7 +66,7 @@ export default function RefundPolicyPageClient() {
             <ol className="mt-3 space-y-2 list-decimal list-inside">
               <li>You select a Product on AutoRevealed.com</li>
               <li>You agree to the Supplier's terms</li>
-              <li>Paddle issues an invoice or processes payment</li>
+              <li>Merchant issues an invoice or processes payment</li>
               <li>Payment is successfully completed and the Product is delivered</li>
             </ol>
           </section>
@@ -79,8 +79,8 @@ export default function RefundPolicyPageClient() {
           <section>
             <h2 className="text-2xl font-semibold text-gray-900">Payments, Taxes & Pricing</h2>
             <ul className="mt-3 space-y-2 list-disc list-inside">
-              <li>Payments are processed securely by Paddle</li>
-              <li>Applicable taxes (VAT, GST, sales tax) are calculated and collected by Paddle</li>
+              <li>Payments are processed securely by Merchant</li>
+              <li>Applicable taxes (VAT, GST, sales tax) are calculated and collected by Merchant</li>
               <li>Prices may change at any time without notice</li>
               <li>You agree to receive invoices and receipts electronically</li>
             </ul>
@@ -102,7 +102,7 @@ export default function RefundPolicyPageClient() {
                   </ul>
                 </li>
               </ul>
-              <p className="mt-3">All refund requests are handled <strong>at Paddle's discretion</strong>.</p>
+              <p className="mt-3">All refund requests are handled <strong>at Merchant's discretion</strong>.</p>
             </div> */}
 
             {/* <div className="mt-6 ml-4">
@@ -118,11 +118,11 @@ export default function RefundPolicyPageClient() {
             <div className="mt-6 ml-4">
               <h3 className="text-xl font-semibold text-gray-900">Refund Policy</h3>
               <p className="mt-2 font-semibold text-gray-900">All plans are charged as a one-time payment. No monthly or recurring fees.</p>
-              <p className="mt-2">We offer a 14-day money-back guarantee on all purchases. If you are not satisfied for any reason within 14 days of purchase, simply contact support with your order details and we will issue a full refund. Refunds are processed through Paddle and returned via the original payment method.</p> <br />
+              <p className="mt-2">We offer a 14-day money-back guarantee on all purchases. If you are not satisfied for any reason within 14 days of purchase, simply contact support with your order details and we will issue a full refund. Refunds are processed through Merchant and returned via the original payment method.</p> <br />
               ✔ No conditions <br />
               ✔ No exceptions <br />
               ✔ No discretionary language <br />
-              ✔ Fully Paddle-compliant
+              ✔ Fully Merchant-compliant
             </div>
 
             <div className="mt-6 ml-4">
@@ -140,7 +140,7 @@ export default function RefundPolicyPageClient() {
 
             {/* <div className="mt-6 ml-4">
               <h3 className="text-xl font-semibold text-gray-900">Refund Window</h3>
-              <p className="mt-2">We offer a 14-day refund policy from the date of purchase in accordance with Paddle’s refund requirements.</p>
+              <p className="mt-2">We offer a 14-day refund policy from the date of purchase in accordance with Merchant’s refund requirements.</p>
               <ul className="mt-2 space-y-2 list-disc list-inside">
                 <li>Refunds will be processed within 3-5 business days</li>
                 <li>The refund will be issued to the original payment method</li>
@@ -182,7 +182,7 @@ export default function RefundPolicyPageClient() {
 
           <section>
             <h2 className="text-2xl font-semibold text-gray-900">Limitation of Liability</h2>
-            <p className="mt-3">Allied Timber and Paddle shall not be liable for:</p>
+            <p className="mt-3">Allied Timber and Merchant shall not be liable for:</p>
             <ul className="mt-3 space-y-2 list-disc list-inside">
               <li>Indirect or consequential damages</li>
               <li>Inaccurate third-party vehicle data</li>
@@ -200,7 +200,7 @@ export default function RefundPolicyPageClient() {
             <h2 className="text-2xl font-semibold text-gray-900">Confidentiality & Privacy</h2>
             <p className="mt-3">All user data is processed securely in accordance with:</p>
             <ul className="mt-3 space-y-2 list-disc list-inside">
-              <li>Paddle's Privacy Policy</li>
+              <li>Merchant's Privacy Policy</li>
               <li>Applicable data protection laws</li>
             </ul>
           </section>
