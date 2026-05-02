@@ -40,7 +40,7 @@ export default function Footer() {
            All Rights Reserved. {new Date().getFullYear()} © AutoRevealed. {' '}
             </span>
 
-            {/* <Link href="/terms" className="text-[#ccc] hover:text-red-400 transition">
+            <Link href="/terms" className="text-[#ccc] hover:text-red-400 transition">
              <u> Terms & Conditions</u>
             </Link>
             {' , '}
@@ -50,7 +50,7 @@ export default function Footer() {
             {' , '}
             <Link href="/refund-policy" className="text-[#ccc] hover:text-red-400 transition">
              <u> Refund Policy</u>
-            </Link> */}
+            </Link>
 
             <span className="block mt-2">
             An approved NMVTIS data provider.
